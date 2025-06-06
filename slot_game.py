@@ -21,7 +21,7 @@ for i, label in enumerate(slots):
 result_label = tk.Label(root, text="", font=("Helvetica", 20), bg="black", fg="white")
 result_label.grid(row=1, column=0, columnspan=3, pady=10)
 
-# スロット回転処理（別スレッドで回す）
+# スロット回転処理?（別スレッドで回す）
 def spin():
     result_label.config(text="")
     final = []
