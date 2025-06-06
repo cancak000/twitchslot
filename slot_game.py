@@ -3,6 +3,10 @@ import random
 import time
 import threading
 
+import pygame
+
+pygame.mixer.init()
+
 # スロット絵柄
 symbols = ["🍒", "🍋", "🔔", "⭐", "💎"]
 
@@ -35,14 +39,24 @@ def spin_individual_reels():
             root.update()
             time.sleep(0.05 + i * 0.0015)
         final.append(slots[reel].cget("text"))  # 最終絵柄を保存
+        pygame.mixer.music.load("sound/stop.mp3")
+        pygame.mixer.music.play()
 
     # 判定
     if final[0] == final[1] == final[2]:
         result_label.config(text="🎉 大当たり！")
+        pygame.mixer.music.load("sound/big_win.mp3")
+        pygame.mixer.music.play()
+
     elif final[0] == final[1] or final[1] == final[2] or final[0] == final[2]:
         result_label.config(text="✨ 小当たり！")
+        pygame.mixer.music.load("sound/small_win.mp3")
+        pygame.mixer.music.play()
+
     else:
         result_label.config(text="🙃 はずれ！")
+        pygame.mixer.music.load("sound/lose.mp3")
+        pygame.mixer.music.play()
 
 # スレッド起動用
 def start_spin():
