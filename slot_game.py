@@ -1,30 +1,27 @@
 import random
 import time
+import sys
 
-# スロットの絵柄
 symbols = ["🍒", "🍋", "🔔", "⭐", "💎"]
 
-# スロットを回す関数
-def spin_slot():
-    result = [random.choice(symbols) for _ in range(3)]
-    print("スロットを回します...")
-    for i in range(3):
-        time.sleep(0.5)
-        print(result[i], end=" ", flush=True)
-    print()
+def spin_animated():
+    print("🎰 スロットを回しています...")
+    final = [random.choice(symbols) for _ in range(3)]
+    for i in range(10):  # アニメーション回数
+        current = [random.choice(symbols) for _ in range(3)]
+        sys.stdout.write("\r" + " ".join(current))
+        sys.stdout.flush()
+        time.sleep(0.1 + i*0.02)
+    sys.stdout.write("\r" + " ".join(final) + "\n")
 
-    if result[0] == result[1] == result[2]:
-        print("🎉 大当たり！3つ揃った！")
-    elif result[0] == result[1] or result[1] == result[2] or result[0] == result[2]:
-        print("✨ 小当たり！2つ揃った！")
+    # 判定
+    if final[0] == final[1] == final[2]:
+        print("🎉 大当たり！")
+    elif final[0] == final[1] or final[1] == final[2] or final[0] == final[2]:
+        print("✨ 小当たり！")
     else:
         print("🙃 はずれ！")
 
-# メイン処理
-def main():
-    while True:
-        input("\nEnterキーでスロットを回す（終了するには Ctrl+C）")
-        spin_slot()
-
+# 実行
 if __name__ == "__main__":
-    main()
+    spin_animated()
