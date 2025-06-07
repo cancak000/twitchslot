@@ -6,7 +6,7 @@ import threading
 import pygame
 
 # ← Trueにするとdebug_buttonが表示される
-DEBUG = True
+DEBUG = False
 
 pygame.mixer.init()
 
