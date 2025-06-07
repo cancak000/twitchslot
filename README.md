@@ -1,5 +1,5 @@
 
-# 🎰 Twitch Slot Machine
+# 🎰 Twitch iV Slot
 
 Twitch配信やOBS連携に使える、Python製のスロットマシンです。  
 GUIは `tkinter`、効果音再生は `pygame` を使用しています。
@@ -8,8 +8,7 @@ GUIは `tkinter`、効果音再生は `pygame` を使用しています。
 
 ## 📸 スクリーンショット
 
-![screenshot](screenshots/demo.png)  
-※スクリーンショットは任意で追加してください（`screenshots` フォルダを作るとよいです）
+![screenshot](screenshots/demo.jpg)
 
 ---
 
@@ -89,4 +88,4 @@ twitchslot/
 
 ## 📜 ライセンス
 
-MITライセンス
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
