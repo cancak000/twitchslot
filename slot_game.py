@@ -16,6 +16,11 @@ root.title("スロットマシン")
 root.geometry("400x250")
 root.configure(bg="black")
 
+stop_sound = pygame.mixer.Sound("sound/stop.mp3")
+big_sound = pygame.mixer.Sound("sound/big_win.mp3")
+small_sound = pygame.mixer.Sound("sound/small_win.mp3")
+lose_sound = pygame.mixer.Sound("sound/lose.mp3")
+
 # スロットリール表示
 slots = [tk.Label(root, text="❔", font=("Helvetica", 48), bg="black", fg="white") for _ in range(3)]
 for i, label in enumerate(slots):
@@ -46,24 +51,20 @@ def spin_individual_reels(force_win=False):
             else:
                 final.append(slots[reel].cget("text"))  # 最終絵柄を保存
         
-            pygame.mixer.music.load("sound/stop.mp3")
-            pygame.mixer.music.play()
+            stop_sound.play()
 
     # 判定
     if final[0] == final[1] == final[2]:
         result_label.config(text="🎉 大当たり！")
-        pygame.mixer.music.load("sound/big_win.mp3")
-        pygame.mixer.music.play()
+        big_sound.play()
 
     elif final[0] == final[1] or final[1] == final[2] or final[0] == final[2]:
         result_label.config(text="✨ 小当たり！")
-        pygame.mixer.music.load("sound/small_win.mp3")
-        pygame.mixer.music.play()
+        small_sound.play()
 
     else:
         result_label.config(text="🙃 はずれ！")
-        pygame.mixer.music.load("sound/lose.mp3")
-        pygame.mixer.music.play()
+        lose_sound.play()
 
 # スレッド起動用
 def start_spin(prm):
