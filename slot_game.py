@@ -17,6 +17,10 @@ symbols = ["🍒", "🍋", "🔔", "⭐", "💎"]
 root = tk.Tk()
 root.title("iV Slot")
 root.geometry("400x250")
+
+if DEBUG:
+    root.geometry("400x300")
+
 root.configure(bg="black")
 
 # グローバル変数
@@ -28,14 +32,14 @@ lose_sound = pygame.mixer.Sound("sound/lose.mp3")
 spin_button = None
 debug_button = None
 
-# スロットリール表示
-slots = [tk.Label(root, text="❔", font=("Helvetica", 48), bg="black", fg="white") for _ in range(3)]
+# スロットリール
+slots = [tk.Label(root, text="❔", font=("Segoe UI Emoji", 48), bg="black", fg="white") for _ in range(3)]
 for i, label in enumerate(slots):
-    label.grid(row=0, column=i, padx=20)
+    label.grid(row=1, column=i, padx=20, pady=(10, 0))  # 行を1に、余白調整
 
-# 結果表示
-result_label = tk.Label(root, text="", font=("Helvetica", 20), bg="black", fg="white")
-result_label.grid(row=1, column=0, columnspan=3, pady=10)
+# 判定ラベル
+result_label = tk.Label(root, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
+result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
 
 # スロットを1リールずつ停止させるアニメーション
 def spin_individual_reels(force_win=False):
@@ -93,13 +97,13 @@ def main():
     global spin_button, debug_button
 
     # スタートボタン
-    spin_button = tk.Button(root, text="スロットを回す", font=("Helvetica", 16), command=start_spin)
-    spin_button.grid(row=2, column=0, columnspan=3, pady=10)
+    spin_button = tk.Button(root, text="スロットを回す", font=("Helvetica", 16), padx=16, pady=6, command=start_spin)
+    spin_button.grid(row=3, column=0, columnspan=3, pady=(0, 20))
 
     if DEBUG:
         # DEBUGボタン
-        debug_button = tk.Button(root, text="大当たりチェック", font=("Helvetica", 8), command=lambda: start_spin(True))
-        debug_button.grid(row=3, column=1, columnspan=3, pady=5)
+        debug_button = tk.Button(root, text="大当たりチェック", font=("Helvetica", 10), padx=10, pady=4, command=lambda: start_spin(True))
+        debug_button.grid(row=4, column=1, columnspan=1, pady=(0, 10))
 
     # 起動
     root.mainloop()
