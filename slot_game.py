@@ -5,6 +5,10 @@ import threading
 
 import pygame
 
+# clone用に補強
+import sys
+import os
+
 # ← Trueにするとdebug_buttonが表示される
 DEBUG = False
 
@@ -23,11 +27,17 @@ if DEBUG:
 
 root.configure(bg="black")
 
-# グローバル変数
-stop_sound = pygame.mixer.Sound("sound/stop.mp3")
-big_sound = pygame.mixer.Sound("sound/big_win.mp3")
-small_sound = pygame.mixer.Sound("sound/small_win.mp3")
-lose_sound = pygame.mixer.Sound("sound/lose.mp3")
+def resource_path(relative_path):
+    """ PyInstallerでパッケージングした後でも動作するパス取得 """
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+# サウンド読み込み
+stop_sound = pygame.mixer.Sound(resource_path("sound/stop.mp3"))
+big_sound = pygame.mixer.Sound(resource_path("sound/big_win.mp3"))
+small_sound = pygame.mixer.Sound(resource_path("sound/small_win.mp3"))
+lose_sound = pygame.mixer.Sound(resource_path("sound/lose.mp3"))
 
 spin_button = None
 debug_button = None
@@ -130,6 +140,12 @@ def main():
 
     # 起動
     root.mainloop()
+
+def resource_path(relative_path):
+    """ PyInstallerでパッケージングした後でも動作するパス取得 """
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 if __name__ == "__main__":
     main()
