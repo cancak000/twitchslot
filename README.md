@@ -138,10 +138,9 @@ twitchslot/
 
 ## 🙋‍♂️ 製作者
 
-**イヴ\_ライバル**（Twitch / Python Dev / Streamer）
+**cancak**（ Python Dev ）
 
-* X: [https://x.com/almriv4](https://x.com/almriv4)
-* Twitch: [https://www.twitch.tv/ivrival](https://www.twitch.tv/ivrival)
+* X: [https://x.com/cancak000](https://x.com/cancak000)
 
 ---
 
