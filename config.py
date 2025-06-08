@@ -1,8 +1,20 @@
-from dotenv import load_dotenv
 import os
+import shutil
+from dotenv import load_dotenv
 
-# .envを読み込む
-load_dotenv()
+# .envの自動生成処理
+TEMPLATE_FILE = ".env.template"
+ENV_FILE = "setting.env"
+
+if not os.path.exists(ENV_FILE):
+    if os.path.exists(TEMPLATE_FILE):
+        shutil.copyfile(TEMPLATE_FILE, ENV_FILE)
+        print(f"✅ '{ENV_FILE}' を '{TEMPLATE_FILE}' から作成しました。")
+    else:
+        print(f"⚠️ '{TEMPLATE_FILE}' が存在しないため、'{ENV_FILE}' を作成できません。")
+
+# .envファイル読み込み
+load_dotenv(ENV_FILE)
 
 # Twitch API関連
 TWITCH_CLIENT_ID = os.getenv("TWITCH_CLIENT_ID")
@@ -17,6 +29,6 @@ USER_ID = os.getenv("USER_ID")
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 
-# OAuth情報
+# OAuth設定
 REDIRECT_URI = os.getenv("REDIRECT_URI")
 AUTH_CODE = os.getenv("AUTH_CODE")
