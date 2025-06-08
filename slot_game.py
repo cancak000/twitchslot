@@ -46,52 +46,75 @@ def spin_individual_reels(force_win=False):
     global spin_button, debug_button
 
     #ボタン無効化
-    spin_button.config(state="disabled")
-    if DEBUG:
-        debug_button.config(state="disabled")
+    def disable_buttons():
+        if spin_button:
+            spin_button.config(state="disabled")
+        if DEBUG and debug_button:
+            debug_button.config(state="disabled")
 
-    result_label.config(text="")
+    def enable_buttons():
+        if spin_button:
+            spin_button.config(state="normal")
+        if DEBUG and debug_button:
+            debug_button.config(state="normal")
+
+    # ボタン無効化（メインスレッドで）
+    root.after(0, disable_buttons)
+
+    def set_result(text, sound):
+        result_label.config(text=text)
+        sound.play()
+
+    def update_label(label, text):
+        label.config(text=text)
+
+    # ラベル初期化
+    # GUI操作をメインスレッドに投げる
+    root.after(0, disable_buttons)
+    root.after(0, lambda: result_label.config(text=""))
+
     final = []
     # 各リールの回転数
     spin_times = [10, 10, 10]  
 
     for reel in range(3):
-            for i in range(spin_times[reel]):
-                symbol = random.choice(symbols)
-                slots[reel].config(text=symbol)
-                root.update()
-                time.sleep(0.05 + i * 0.0015)
+        for i in range(spin_times[reel]):
+            symbol = random.choice(symbols)
+            root.after(0, lambda r=reel, s=symbol: update_label(slots[r], s))
+            time.sleep(0.05 + i * 0.0015)
 
-            if force_win:
-                smbl = "💎"
-                slots[reel].config(text=smbl)
-                final.append(smbl)  # 最終絵柄を保存
-            else:
-                final.append(slots[reel].cget("text"))  # 最終絵柄を保存
-        
-            stop_sound.play()
+        if force_win:
+            smbl = "💎"
+        else:
+            smbl = random.choice(symbols)
 
-    # 判定
+        final.append(smbl)
+        root.after(0, lambda r=reel, s=smbl: update_label(slots[r], s))
+        root.after(0, stop_sound.play())
+        time.sleep(0.1)
+
+    # 判定（メインスレッドに投げる）
     if final[0] == final[1] == final[2]:
-        result_label.config(text="🎉 大当たり！")
-        big_sound.play()
-
+        root.after(0, lambda: set_result("🎉 大当たり！", big_sound))
+        root.after(0, lambda: big_sound.play())
+ 
     elif final[0] == final[1] or final[1] == final[2] or final[0] == final[2]:
-        result_label.config(text="✨ 小当たり！")
-        small_sound.play()
-
+        root.after(0, lambda: set_result("✨ 小当たり！", small_sound))
+        root.after(0, lambda: small_sound.play())
     else:
-        result_label.config(text="🙃 はずれ！")
-        lose_sound.play()
+        root.after(0, lambda: set_result("🙃 はずれ！", lose_sound))
+        root.after(0, lambda: lose_sound.play())
 
-    #ボタン無効化
-    spin_button.config(state="normal")
-    if DEBUG:
-        debug_button.config(state="normal")
+    # ボタン再有効化
+    root.after(0, enable_buttons)
 
 # スレッド起動用
 def start_spin(force_win=False):
     threading.Thread(target=spin_individual_reels, args=(force_win,)).start()
+
+# ngrokのWebhookトリガー用
+def trigger_slot_spin(force_win=False):
+    root.after(0, lambda: start_spin(force_win))
 
 def main():
     global spin_button, debug_button
