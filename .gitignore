@@ -1,4 +1,10 @@
 __pycache__/
+# PyInstaller関連
+build/
+dist/
+*.spec
+
+# ログや設定
 log.txt
 *.env
 info
