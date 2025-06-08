@@ -141,7 +141,7 @@ twitchslot/
 **cancak**（ Python Dev ）
 
 * X: [https://x.com/cancak000](https://x.com/cancak000)
-  CrowdWorks: [プロフィール][https://crowdworks.jp/public/employees/5132126?ref=login_header]
+  CrowdWorks: [プロフィール](https://crowdworks.jp/public/employees/5132126?ref=login_header)
 ---
 
 ## 📜 ライセンス
