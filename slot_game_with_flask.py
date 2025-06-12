@@ -16,6 +16,10 @@ from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET
 #log用
 import traceback
 
+# USERNAMEの追加
+import queue
+username_queue = queue.Queue()
+
 # 設定
 DEBUG = False
 
@@ -57,6 +61,10 @@ result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
 spin_button = tk.Button(root, text="スロットを回す", font=("Helvetica", 16), padx=16, pady=6, command=lambda: start_spin(False))
 spin_button.grid(row=3, column=0, columnspan=3, pady=(0, 20))
 
+# 視聴者名表示ラベル
+username_label = tk.Label(root, text="", font=("Helvetica", 14, "bold"), bg="black", fg="cyan")
+username_label.grid(row=0, column=0, columnspan=3, pady=(10, 0))
+
 debug_button = None
 if DEBUG:
     debug_button = tk.Button(root, text="大当たりチェック", font=("Helvetica", 10),
@@ -67,6 +75,13 @@ if DEBUG:
 # スロットを1リールずつ停止させるアニメーション
 def spin_individual_reels(force_win=False):
     global spin_button, debug_button
+
+    # 視聴者名の表示処理
+    try:
+        username = username_queue.get_nowait()
+        root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
+    except queue.Empty:
+        root.after(0, lambda: username_label.config(text=""))
 
     #ボタン無効化
     def disable_buttons():
@@ -86,7 +101,7 @@ def spin_individual_reels(force_win=False):
 
     def set_result(text, sound):
         result_label.config(text=text)
-        sound.play()
+        root.after(0, lambda: sound.play())
 
     def update_label(label, text):
         label.config(text=text)
@@ -119,18 +134,14 @@ def spin_individual_reels(force_win=False):
     # 判定（メインスレッドに投げる）
     if final[0] == final[1] == final[2]:
         root.after(0, lambda: set_result("🎉 大当たり！", big_sound))
-        root.after(0, lambda: big_sound.play())
- 
     elif final[0] == final[1] or final[1] == final[2] or final[0] == final[2]:
         root.after(0, lambda: set_result("✨ 小当たり！", small_sound))
-        root.after(0, lambda: small_sound.play())
     else:
         root.after(0, lambda: set_result("🙃 はずれ！", lose_sound))
-        root.after(0, lambda: lose_sound.play())
 
     # ボタン再有効化
     root.after(0, enable_buttons)
-
+    root.after(0, lambda: username_label.config(text=""))
 # スレッド起動用
 def start_spin(force_win=False):
     threading.Thread(target=spin_individual_reels, args=(force_win,)).start()
@@ -188,7 +199,9 @@ def eventsub():
 
         if message_type == "notification":
             event = body_json["event"]
+            username = event["user_name"]
             print("🎮 チャネポ使用検知！ユーザー：", event["user_name"])
+            username_queue.put(username)
             trigger_slot_spin()
             return "", 200
 
