@@ -29,7 +29,7 @@ app = Flask(__name__)
 # GUIセットアップ
 root = tk.Tk()
 root.title("iV Slot")
-root.geometry("400x250" if DEBUG else "400x300")
+root.geometry("400x350" if DEBUG else "400x250")
 
 root.configure(bg="black")
 
@@ -57,10 +57,6 @@ for i, label in enumerate(slots):
 result_label = tk.Label(root, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
 result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
 
-# スタートボタン
-spin_button = tk.Button(root, text="スロットを回す", font=("Helvetica", 16), padx=16, pady=6, command=lambda: start_spin(False))
-spin_button.grid(row=3, column=0, columnspan=3, pady=(0, 20))
-
 # 視聴者名表示ラベル
 username_label = tk.Label(root, text="", font=("Helvetica", 14, "bold"), bg="black", fg="cyan")
 username_label.grid(row=0, column=0, columnspan=3, pady=(10, 0))
@@ -74,7 +70,6 @@ if DEBUG:
 
 # スロットを1リールずつ停止させるアニメーション
 def spin_individual_reels(force_win=False):
-    global spin_button, debug_button
 
     # 視聴者名の表示処理
     try:
@@ -82,22 +77,6 @@ def spin_individual_reels(force_win=False):
         root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
     except queue.Empty:
         root.after(0, lambda: username_label.config(text=""))
-
-    #ボタン無効化
-    def disable_buttons():
-        if spin_button:
-            spin_button.config(state="disabled")
-        if DEBUG and debug_button:
-            debug_button.config(state="disabled")
-
-    def enable_buttons():
-        if spin_button:
-            spin_button.config(state="normal")
-        if DEBUG and debug_button:
-            debug_button.config(state="normal")
-
-    # ボタン無効化（メインスレッドで）
-    root.after(0, disable_buttons)
 
     def set_result(text, sound):
         result_label.config(text=text)
@@ -108,7 +87,6 @@ def spin_individual_reels(force_win=False):
 
     # ラベル初期化
     # GUI操作をメインスレッドに投げる
-    root.after(0, disable_buttons)
     root.after(0, lambda: result_label.config(text=""))
 
     final = []
@@ -139,9 +117,6 @@ def spin_individual_reels(force_win=False):
     else:
         root.after(0, lambda: set_result("🙃 はずれ！", lose_sound))
 
-    # ボタン再有効化
-    root.after(0, enable_buttons)
-    root.after(0, lambda: username_label.config(text=""))
 # スレッド起動用
 def start_spin(force_win=False):
     threading.Thread(target=spin_individual_reels, args=(force_win,)).start()
