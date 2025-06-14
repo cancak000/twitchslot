@@ -20,6 +20,8 @@ import traceback
 import queue
 username_queue = queue.Queue()
 
+from PIL import Image, ImageTk
+
 # 設定
 DEBUG = False
 
@@ -34,8 +36,24 @@ root.geometry("400x350" if DEBUG else "400x250")
 root.configure(bg="black")
 
 # スロット絵柄
-symbols = ["🍒", "🍋", "🔔", "⭐", "💎"]
+image_paths = {
+    "GENIE": "image/jinny.png",
+    "PALACE": "image/castle.png",
+    "MOON": "image/moon.png",
+    "LAMP": "image/ramp.png",
+    "CARPET": "image/carpet.png",
+    "COIN": "image/coin.png",
+    "SCORPION": "image/scorpion.png",
+    "CAMEL": "image/camel.png"
+}
 
+loaded_images = {
+    key: ImageTk.PhotoImage(Image.open(path).resize((90, 90)))
+    for key, path in image_paths.items()
+}
+
+# 画像の読み込みと保持
+reel_symbols = list(loaded_images.keys())
 
 # pygameサウンド初期化
 pygame.mixer.init()
@@ -46,12 +64,12 @@ small_sound = pygame.mixer.Sound("sound/small_win.mp3")
 lose_sound = pygame.mixer.Sound("sound/lose.mp3")
 
 
-#UI 
+####UI#### 
 
 # スロットリール
-slots = [tk.Label(root, text="❔", font=("Segoe UI Emoji", 48), bg="black", fg="white") for _ in range(3)]
+slots = [tk.Label(root, image=loaded_images["GENIE"], bg="black") for _ in range(3)]
 for i, label in enumerate(slots):
-    label.grid(row=1, column=i, padx=20, pady=(10, 0))  
+    label.grid(row=1, column=i, padx=20, pady=(10, 0))
 
 # 判定ラベル
 result_label = tk.Label(root, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
@@ -82,8 +100,9 @@ def spin_individual_reels(force_win=False):
         result_label.config(text=text)
         root.after(0, lambda: sound.play())
 
-    def update_label(label, text):
-        label.config(text=text)
+    def update_label_with_image(label, image_key):
+        label.config(image=loaded_images[image_key])
+        label.image = loaded_images[image_key]
 
     # ラベル初期化
     # GUI操作をメインスレッドに投げる
@@ -95,21 +114,17 @@ def spin_individual_reels(force_win=False):
 
     for reel in range(3):
         for i in range(spin_times[reel]):
-            symbol = random.choice(symbols)
-            root.after(0, lambda r=reel, s=symbol: update_label(slots[r], s))
+            symbol_key = random.choice(reel_symbols)
+            root.after(0, lambda r=reel, s=symbol_key: update_label_with_image(slots[r], s))
             time.sleep(0.05 + i * 0.0015)
 
-        if force_win:
-            smbl = "💎"
-        else:
-            smbl = random.choice(symbols)
-
-        final.append(smbl)
-        root.after(0, lambda r=reel, s=smbl: update_label(slots[r], s))
+        final_symbol = "GENIE" if force_win else random.choice(reel_symbols)
+        final.append(final_symbol)
+        root.after(0, lambda r=reel, s=final_symbol: update_label_with_image(slots[r], s))
         root.after(0, lambda: stop_sound.play())
         time.sleep(0.1)
 
-    # 判定（メインスレッドに投げる）
+    # 判定
     if final[0] == final[1] == final[2]:
         root.after(0, lambda: set_result("🎉 大当たり！", big_sound))
     elif final[0] == final[1] or final[1] == final[2] or final[0] == final[2]:
@@ -125,6 +140,10 @@ def start_spin(force_win=False):
 def trigger_slot_spin(force_win=False):
     root.after(0, lambda: start_spin(force_win))
 
+# 画像表示対応
+def update_label_with_image(label, image_key):
+    label.config(image=loaded_images[image_key])
+    label.image = loaded_images[image_key]
 
 #############Flask##################
 
