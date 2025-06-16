@@ -21,6 +21,7 @@ username_queue = queue.Queue()
 
 DEBUG = False
 
+
 # SQLite接続はスレッドセーフに
 conn = sqlite3.connect("slot_scores.db", check_same_thread=False)
 cursor = conn.cursor()
@@ -167,6 +168,18 @@ def show_ranking_window():
         entry = f"{i}. {user}：{score} 点"
         tk.Label(ranking_win, text=entry, font=("Helvetica", 12),
                  bg="black", fg="white").pack(anchor="w", padx=20)
+
+# グローバルDEBUG切り替え用関数
+def toggle_debug():
+    global DEBUG
+    DEBUG = not DEBUG
+    debug_button.config(text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}")
+    print(f"🛠 DEBUGモード {'有効' if DEBUG else '無効'} に切り替えました")
+
+# GUI下部にボタン追加（ranking_buttonの下あたり）
+debug_button = tk.Button(root, text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}", font=("Helvetica", 10),
+                         command=toggle_debug)
+debug_button.grid(row=3, column=2, pady=(0, 10))
 
 def spin_individual_reels(force_win=False):
     try:
