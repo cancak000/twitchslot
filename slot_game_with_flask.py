@@ -183,51 +183,64 @@ debug_button.grid(row=3, column=2, pady=(0, 10))
 
 def spin_individual_reels(force_win=False):
     try:
-        username = username_queue.get_nowait()
-    except queue.Empty:
-        username = "ゲスト"
+        try:
+            username = username_queue.get_nowait()
+        except queue.Empty:
+            username = "ゲスト"
 
-    root.after(0, lambda: canvas.place_forget())
-    root.after(0, lambda: canvas.delete("all"))
-    root.after(0, lambda: canvas.configure(bg="black"))
-    root.after(0, lambda: root.configure(bg="black"))
-    for label in [username_label, result_label] + slots:
-        root.after(0, lambda l=label: l.configure(bg="black"))
-    for i, label in enumerate(slots):
-        root.after(0, lambda l=label, i=i: l.grid(row=1, column=i, padx=20, pady=(10, 0)))
+        root.after(0, lambda: canvas.place_forget())
+        root.after(0, lambda: canvas.delete("all"))
+        root.after(0, lambda: canvas.configure(bg="black"))
+        root.after(0, lambda: root.configure(bg="black"))
+        for label in [username_label, result_label] + slots:
+            root.after(0, lambda l=label: l.configure(bg="black"))
+        for i, label in enumerate(slots):
+            root.after(0, lambda l=label, i=i: l.grid(row=1, column=i, padx=20, pady=(10, 0)))
 
-    root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
-    result_label.config(text="")
-    final = []
+        root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
+        result_label.config(text="")
+        final = []
 
-    for reel in range(3):
-        for i in range(10):
-            symbol = random.choice(reel_symbols)
-            root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
-            time.sleep(0.05 + i * 0.0015)
-        final_symbol = "GENIE" if force_win else random.choice(reel_symbols)
-        final.append(final_symbol)
-        root.after(0, lambda r=reel, s=final_symbol: update_label_with_image(slots[r], s))
-        root.after(0, lambda: stop_sound.play())
-        time.sleep(0.1)
+        for reel in range(3):
+            for i in range(10):
+                symbol = random.choice(reel_symbols)
+                root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
+                time.sleep(0.05 + i * 0.0015)
+            final_symbol = "GENIE" if force_win else random.choice(reel_symbols)
+            final.append(final_symbol)
+            root.after(0, lambda r=reel, s=final_symbol: update_label_with_image(slots[r], s))
+            root.after(0, lambda: stop_sound.play())
+            time.sleep(0.1)
 
-    message, sound, score = check_combo(final)
-    root.after(0, lambda: result_label.config(text=message))
-    root.after(0, lambda: sound.play())
-    if score >= 50:
-        flash_background()
-        blink_reels()
-        explosion_effect()
-    elif score >= 10:
-        blink_reels()
-        flash_background()
-    elif score > 0:
-        blink_reels(times=2, interval=100)
+        message, sound, score = check_combo(final)
+        root.after(0, lambda: result_label.config(text=message))
+        root.after(0, lambda: sound.play())
+        if score >= 50:
+            flash_background()
+            blink_reels()
+            explosion_effect()
+        elif score >= 10:
+            blink_reels()
+            flash_background()
+        elif score > 0:
+            blink_reels(times=2, interval=100)
 
-    add_score(username, score)
+        add_score(username, score)
+
+    finally:
+        spin_lock.release()
+
+spin_lock = threading.Lock()
 
 def start_spin(force_win=False):
-    threading.Thread(target=spin_individual_reels, args=(force_win,)).start()
+    if not spin_lock.acquire(blocking=False):
+        print("⚠️ スロットは現在実行中です")
+        return  # すでにロック中＝スロット中
+    try:
+        threading.Thread(target=spin_individual_reels, args=(force_win,)).start()
+    finally:
+        # spin_individual_reels()の中で終了後にreleaseされるよう変更する方が安全
+        pass  # releaseはスレッド内で行う
 
 def trigger_slot_spin(force_win=False):
     if DEBUG:
