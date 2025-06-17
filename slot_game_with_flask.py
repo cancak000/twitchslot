@@ -181,7 +181,53 @@ debug_button = tk.Button(root, text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}", f
                          command=toggle_debug)
 debug_button.grid(row=3, column=2, pady=(0, 10))
 
-def spin_individual_reels(force_win=False):
+def choose_weighted_result(force_level):
+    roll = random.random()
+
+    if force_level == 3:  # 超高確率
+        if roll < 0.25:
+            return ["GENIE"] * 3
+        elif roll < 0.5:
+            return ["COIN"] * 3
+        elif roll < 0.75:
+            return ["CAMEL"] * 3
+        elif roll < 0.90:
+            base = random.choice(reel_symbols)
+            diff = random.choice([s for s in reel_symbols if s != base])
+            combo = [base, base, diff]
+            random.shuffle(combo)
+            return combo
+    elif force_level == 2:  # 高確率
+        if roll < 0.15:
+            return ["GENIE"] * 3
+        elif roll < 0.35:
+            return ["COIN"] * 3
+        elif roll < 0.55:
+            return ["CAMEL"] * 3
+        elif roll < 0.75:
+            base = random.choice(reel_symbols)
+            diff = random.choice([s for s in reel_symbols if s != base])
+            combo = [base, base, diff]
+            random.shuffle(combo)
+            return combo
+    elif force_level == 1:  # 中確率
+        if roll < 0.1:
+            return ["GENIE"] * 3
+        elif roll < 0.25:
+            return ["COIN"] * 3
+        elif roll < 0.4:
+            return ["CAMEL"] * 3
+        elif roll < 0.6:
+            base = random.choice(reel_symbols)
+            diff = random.choice([s for s in reel_symbols if s != base])
+            combo = [base, base, diff]
+            random.shuffle(combo)
+            return combo
+
+    # 通常 or ハズレ
+    return [random.choice(reel_symbols) for _ in range(3)]
+
+def spin_individual_reels(force_level=0):
     try:
         try:
             username = username_queue.get_nowait()
@@ -201,14 +247,13 @@ def spin_individual_reels(force_win=False):
         result_label.config(text="")
         final = []
 
-        for reel in range(3):
+        final = choose_weighted_result(force_level)
+        for reel, symbol in enumerate(final):
             for i in range(10):
-                symbol = random.choice(reel_symbols)
-                root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
+                temp_symbol = random.choice(reel_symbols)
+                root.after(0, lambda r=reel, s=temp_symbol: update_label_with_image(slots[r], s))
                 time.sleep(0.05 + i * 0.0015)
-            final_symbol = "GENIE" if force_win else random.choice(reel_symbols)
-            final.append(final_symbol)
-            root.after(0, lambda r=reel, s=final_symbol: update_label_with_image(slots[r], s))
+            root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
             root.after(0, lambda: stop_sound.play())
             time.sleep(0.1)
 
@@ -232,20 +277,20 @@ def spin_individual_reels(force_win=False):
 
 spin_lock = threading.Lock()
 
-def start_spin(force_win=False):
+def start_spin(force_level=0):
     if not spin_lock.acquire(blocking=False):
         print("⚠️ スロットは現在実行中です")
         return  # すでにロック中＝スロット中
     try:
-        threading.Thread(target=spin_individual_reels, args=(force_win,)).start()
+        threading.Thread(target=spin_individual_reels, args=(force_level,)).start()
     finally:
         # spin_individual_reels()の中で終了後にreleaseされるよう変更する方が安全
         pass  # releaseはスレッド内で行う
 
-def trigger_slot_spin(force_win=False):
+def trigger_slot_spin(force_level=0):
     if DEBUG:
-        force_win = True
-    root.after(0, lambda: start_spin(force_win))
+        force_level = 3
+    root.after(0, lambda: start_spin(force_level))
 
 @app.route("/", methods=["GET"])
 def index():
@@ -282,9 +327,25 @@ def eventsub():
         if message_type == "notification":
             event = body_json["event"]
             username = event["user_name"]
+            reward_title = event["reward"]["title"]
+            reward_cost = event["reward"]["cost"]
+
+            print(f"🎮 {username} が「{reward_title}」({reward_cost}pt) を使用！")
             print("🎮 チャネポ使用検知！ユーザー：", event["user_name"])
+
+            # cost に応じた force_level（0:通常, 1:低, 2:中, 3:高）を決定
+            if reward_cost >= 2500:
+                force_level = 3
+            elif reward_cost >= 1500:
+                force_level = 2
+            elif reward_cost >= 500:
+                force_level = 1
+            else:
+                force_level = 0
+
+            force_win = reward_cost >= 1000
             username_queue.put(username)
-            trigger_slot_spin()
+            trigger_slot_spin(force_level)
             return "", 200
         print("通知を受信:", body_json)
         return "", 204
