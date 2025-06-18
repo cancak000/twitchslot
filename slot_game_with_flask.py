@@ -15,7 +15,7 @@ import os
 import traceback
 from PIL import Image, ImageTk
 
-from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET
+from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN_USER
 
 username_queue = queue.Queue()
 
@@ -86,7 +86,7 @@ for i in range(3):
 result_label = tk.Label(root, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
 result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
 
-username_label = tk.Label(root, text="読み込み成功", font=("Helvetica", 14, "bold"), bg="black", fg="cyan")
+username_label = tk.Label(root, text="", font=("Helvetica", 14, "bold"), bg="black", fg="cyan")
 username_label.grid(row=0, column=0, columnspan=3, pady=(10, 0))
 ranking_button = tk.Button(root, text="🏆 ランキングを見る", font=("Helvetica", 10),
                            command=lambda: show_ranking_window())
@@ -169,6 +169,71 @@ def show_ranking_window():
         tk.Label(ranking_win, text=entry, font=("Helvetica", 12),
                  bg="black", fg="white").pack(anchor="w", padx=20)
 
+
+# 🔁 スロット演出を順番に処理するワーカー
+def slot_queue_worker():
+    while True:
+        try:
+            username, force_level = username_queue.get()
+            print(f"▶️ スロット順番待ち中: {username}")
+            root.after(0, lambda u=username, f=force_level: start_spin_with_user(u, f))
+            spin_lock.acquire()
+            spin_lock.release()
+            username_queue.task_done()
+        except Exception as e:
+            print("❌ キューワーカーエラー:", e)
+
+threading.Thread(target=slot_queue_worker, daemon=True).start()
+
+def start_spin_with_user(username, force_level=0):
+    acquired = spin_lock.acquire(timeout=2)
+    if not acquired:
+        print(f"⚠️ スロットがロック中：{username}はスキップされました")
+        return
+    threading.Thread(target=spin_individual_reels_with_user, args=(username, force_level)).start()
+
+def spin_individual_reels_with_user(username, force_level=0):
+    try:
+        root.after(0, lambda: canvas.place_forget())
+        root.after(0, lambda: canvas.delete("all"))
+        root.after(0, lambda: canvas.configure(bg="black"))
+        root.after(0, lambda: root.configure(bg="black"))
+        for label in [username_label, result_label] + slots:
+            root.after(0, lambda l=label: l.configure(bg="black"))
+        for i, label in enumerate(slots):
+            root.after(0, lambda l=label, i=i: l.grid(row=1, column=i, padx=20, pady=(10, 0)))
+
+        root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
+        result_label.config(text="")
+        final = choose_weighted_result(force_level)
+
+        for reel, symbol in enumerate(final):
+            for i in range(10):
+                temp_symbol = random.choice(reel_symbols)
+                root.after(0, lambda r=reel, s=temp_symbol: update_label_with_image(slots[r], s))
+                time.sleep(0.05 + i * 0.0015)
+            root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
+            root.after(0, lambda: stop_sound.play())
+            time.sleep(0.1)
+
+        message, sound, score = check_combo(final)
+        root.after(0, lambda: result_label.config(text=message))
+        root.after(0, lambda: sound.play())
+        if score >= 50:
+            flash_background()
+            blink_reels()
+            explosion_effect()
+        elif score >= 10:
+            blink_reels()
+            flash_background()
+        elif score > 0:
+            blink_reels(times=2, interval=100)
+
+        add_score(username, score)
+
+    finally:
+        spin_lock.release()
+
 # グローバルDEBUG切り替え用関数
 def toggle_debug():
     global DEBUG
@@ -180,7 +245,13 @@ def toggle_debug():
 debug_button = tk.Button(root, text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}", font=("Helvetica", 10),
                          command=toggle_debug)
 debug_button.grid(row=3, column=2, pady=(0, 10))
-
+def semi_match_combo():
+    base = random.choice(reel_symbols)
+    diff = random.choice([s for s in reel_symbols if s != base])
+    combo = [base, base, diff]
+    random.shuffle(combo)
+    return combo
+    
 def choose_weighted_result(force_level):
     roll = random.random()
 
@@ -192,11 +263,7 @@ def choose_weighted_result(force_level):
         elif roll < 0.75:
             return ["CAMEL"] * 3
         elif roll < 0.90:
-            base = random.choice(reel_symbols)
-            diff = random.choice([s for s in reel_symbols if s != base])
-            combo = [base, base, diff]
-            random.shuffle(combo)
-            return combo
+            return semi_match_combo()
     elif force_level == 2:  # 高確率
         if roll < 0.15:
             return ["GENIE"] * 3
@@ -205,11 +272,7 @@ def choose_weighted_result(force_level):
         elif roll < 0.55:
             return ["CAMEL"] * 3
         elif roll < 0.75:
-            base = random.choice(reel_symbols)
-            diff = random.choice([s for s in reel_symbols if s != base])
-            combo = [base, base, diff]
-            random.shuffle(combo)
-            return combo
+            return semi_match_combo()
     elif force_level == 1:  # 中確率
         if roll < 0.1:
             return ["GENIE"] * 3
@@ -218,11 +281,7 @@ def choose_weighted_result(force_level):
         elif roll < 0.4:
             return ["CAMEL"] * 3
         elif roll < 0.6:
-            base = random.choice(reel_symbols)
-            diff = random.choice([s for s in reel_symbols if s != base])
-            combo = [base, base, diff]
-            random.shuffle(combo)
-            return combo
+            return semi_match_combo()
 
     # 通常 or ハズレ
     return [random.choice(reel_symbols) for _ in range(3)]
@@ -278,16 +337,20 @@ def spin_individual_reels(force_level=0):
 spin_lock = threading.Lock()
 
 def start_spin(force_level=0):
-    if not spin_lock.acquire(blocking=False):
-        print("⚠️ スロットは現在実行中です")
-        return  # すでにロック中＝スロット中
-    try:
-        threading.Thread(target=spin_individual_reels, args=(force_level,)).start()
-    finally:
-        # spin_individual_reels()の中で終了後にreleaseされるよう変更する方が安全
-        pass  # releaseはスレッド内で行う
+    acquired = spin_lock.acquire(timeout=2)
+    if not acquired:
+        print("⚠️ スロットがロック中で取得できませんでした")
+        return
+    threading.Thread(target=spin_individual_reels, args=(force_level,)).start()
 
 def trigger_slot_spin(force_level=0):
+    if DEBUG:
+        force_level = 3
+    try:
+        username = username_queue.get_nowait()
+    except queue.Empty:
+        return
+    username_queue.put((username, force_level))
     if DEBUG:
         force_level = 3
     root.after(0, lambda: start_spin(force_level))
@@ -324,29 +387,30 @@ def eventsub():
         if message_type == "webhook_callback_verification":
             print("✅ EventSub 登録確認")
             return body_json["challenge"], 200
+        
         if message_type == "notification":
             event = body_json["event"]
-            username = event["user_name"]
             reward_title = event["reward"]["title"]
             reward_cost = event["reward"]["cost"]
 
-            print(f"🎮 {username} が「{reward_title}」({reward_cost}pt) を使用！")
-            print("🎮 チャネポ使用検知！ユーザー：", event["user_name"])
+            # 🎯 対象のリワード名だけ許可
+            valid_titles = {"スロットを回す", "スロット中確率", "スロット大当たりフラグ"}
+            if reward_title not in valid_titles:
+                print(f"⚠️ 無効なリワード「{reward_title}」は無視されました")
+                return "", 204
 
-            # cost に応じた force_level（0:通常, 1:低, 2:中, 3:高）を決定
-            if reward_cost >= 2500:
+            if reward_title == "スロット大当たりフラグ":
                 force_level = 3
-            elif reward_cost >= 1500:
+            elif reward_title == "スロット中確率":
                 force_level = 2
-            elif reward_cost >= 500:
-                force_level = 1
             else:
                 force_level = 0
 
-            force_win = reward_cost >= 1000
-            username_queue.put(username)
-            trigger_slot_spin(force_level)
+            username = event["user_name"]
+            print(f"🎮 {username} が「{reward_title}」({reward_cost}pt) を使用！ force_level={force_level}")
+            username_queue.put((username, force_level))
             return "", 200
+
         print("通知を受信:", body_json)
         return "", 204
     except Exception as e:
@@ -365,8 +429,37 @@ def start_flask_server():
     app.run(port=5000, use_reloader=False, threaded=True)
 
 if __name__ == "__main__":
+    from start_ngrok import start_ngrok, update_env_url
+    from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
+    from token_manager import refresh_user_token, get_app_token
+
     app.config['DEBUG'] = False
     app.config['PROPAGATE_EXCEPTIONS'] = False
-    print("✅ スクリプト起動") 
-    threading.Thread(target=start_flask_server, daemon=True).start()
-    root.mainloop()
+
+    print("✅ スクリプト起動")
+
+    # 🌐 ngrok起動してWebhook URL取得
+    public_url = start_ngrok()
+    if public_url:
+        update_env_url(public_url)  # setting.env を書き換え反映
+
+        # ♻️ トークン更新
+        user_token = refresh_user_token()
+        app_token = get_app_token()
+
+        if not user_token or not app_token:
+            print("❌ トークンの取得に失敗しました")
+            exit(1)
+
+        # 🎯 EventSubの再登録（重複削除 → 再登録）
+        reward_ids = get_reward_ids(user_token)
+        delete_existing_matching_eventsubs(app_token, reward_ids)
+        register_eventsub(app_token, reward_ids)
+
+        # Flaskサーバ起動（非同期）
+        threading.Thread(target=start_flask_server, daemon=True).start()
+
+        # GUI開始
+        root.mainloop()
+    else:
+        print("❌ 公開URLの取得に失敗したため、起動を中止します。")
