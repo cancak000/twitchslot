@@ -14,7 +14,6 @@ import hashlib
 import os
 import traceback
 from PIL import Image, ImageTk
-
 from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN_USER
 
 username_queue = queue.Queue()
@@ -440,37 +439,46 @@ def start_flask_server():
     app.run(port=5000, use_reloader=False, threaded=True)
 
 if __name__ == "__main__":
-    from start_ngrok import start_ngrok, update_env_url
-    from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
-    from token_manager import refresh_user_token, get_app_token
+    import threading
+    import traceback
 
-    app.config['DEBUG'] = False
-    app.config['PROPAGATE_EXCEPTIONS'] = False
+    try:
+        from start_ngrok import start_ngrok, update_env_url
+        from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
+        from token_manager import refresh_user_token, get_app_token
 
-    print("✅ スクリプト起動")
+        app.config['DEBUG'] = False
+        app.config['PROPAGATE_EXCEPTIONS'] = False
 
-    # 🌐 ngrok起動してWebhook URL取得
-    public_url = start_ngrok()
-    if public_url:
-        update_env_url(public_url)  # setting.env を書き換え反映
+        print("✅ スクリプト起動")
 
-        # ♻️ トークン更新
-        user_token = refresh_user_token()
-        app_token = get_app_token()
+        # 🌐 ngrok起動してWebhook URL取得
+        public_url = start_ngrok()
+        if public_url:
+            update_env_url(public_url)
 
-        if not user_token or not app_token:
-            print("❌ トークンの取得に失敗しました")
-            exit(1)
+            # ♻️ トークン更新
+            user_token = refresh_user_token()
+            app_token = get_app_token()
 
-        # 🎯 EventSubの再登録（重複削除 → 再登録）
-        reward_ids = get_reward_ids(user_token)
-        delete_existing_matching_eventsubs(app_token, reward_ids)
-        register_eventsub(app_token, reward_ids)
+            if not user_token or not app_token:
+                print("❌ トークンの取得に失敗しました")
+                sys.exit(1)
 
-        # Flaskサーバ起動（非同期）
-        threading.Thread(target=start_flask_server, daemon=True).start()
+            # 🎯 EventSubの再登録
+            reward_ids = get_reward_ids(user_token)
+            delete_existing_matching_eventsubs(app_token, reward_ids)
+            register_eventsub(app_token, reward_ids)
 
-        # GUI開始
-        root.mainloop()
-    else:
-        print("❌ 公開URLの取得に失敗したため、起動を中止します。")
+            # Flaskサーバ起動
+            threading.Thread(target=start_flask_server, daemon=True).start()
+
+            # GUI起動
+            root.mainloop()
+        else:
+            print("❌ 公開URLの取得に失敗したため、起動を中止します。")
+
+    except Exception as e:
+        with open("slot_error_log.txt", "w", encoding="utf-8") as f:
+            f.write("エラー発生：\n")
+            f.write(traceback.format_exc())
