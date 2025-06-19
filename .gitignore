@@ -1,10 +1,20 @@
+# Python
 __pycache__/
-# PyInstaller関連
+*.pyc
+*.pyo
+*.pyd
+.env
+setting.env
+.env.template
+slot_scores.db
+
+# PyInstaller
 build/
 dist/
 *.spec
 
-# ログや設定
+# VSCode
+.vscode/
+
+# Logs
 log.txt
-*.env
-info

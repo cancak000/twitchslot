@@ -21,6 +21,17 @@ username_queue = queue.Queue()
 
 DEBUG = False
 
+# 
+import sys
+
+def resource_path(relative_path):
+    try:
+        # PyInstaller実行時
+        base_path = sys._MEIPASS
+    except Exception:
+        # スクリプト実行時
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 # SQLite接続はスレッドセーフに
 conn = sqlite3.connect("slot_scores.db", check_same_thread=False)
@@ -64,17 +75,17 @@ image_paths = {
 }
 
 loaded_images = {
-    key: ImageTk.PhotoImage(Image.open(path).resize((128, 128)))
+    key: ImageTk.PhotoImage(Image.open(resource_path(path)).resize((128, 128)))
     for key, path in image_paths.items()
 }
 
 reel_symbols = list(loaded_images.keys())
 
 pygame.mixer.init()
-stop_sound = pygame.mixer.Sound("sound/stop.mp3")
-big_sound = pygame.mixer.Sound("sound/big_win.mp3")
-small_sound = pygame.mixer.Sound("sound/small_win.mp3")
-lose_sound = pygame.mixer.Sound("sound/lose.mp3")
+stop_sound = pygame.mixer.Sound(resource_path("sound/stop.mp3"))
+big_sound = pygame.mixer.Sound(resource_path("sound/big_win.mp3"))
+small_sound = pygame.mixer.Sound(resource_path("sound/small_win.mp3"))
+lose_sound = pygame.mixer.Sound(resource_path("sound/lose.mp3"))
 
 slots = []
 for i in range(3):
