@@ -8,32 +8,34 @@ from dotenv import load_dotenv
 NGROK_PATH = "ngrok.exe"  # 同梱
 PORT = 5000
 
+def get_public_url():
+    try:
+        res = requests.get("http://localhost:4040/api/tunnels")
+        tunnel_info = res.json()
+        return tunnel_info["tunnels"][0]["public_url"]
+    except:
+        return None
+
+def get_public_url_with_wait(retry=10, wait=1):
+    for i in range(retry):
+        url = get_public_url()
+        if url:
+            return url
+        print(f" ngrokのURL待機中... ({i+1}/{retry})")
+        time.sleep(wait)
+    print("ngrokのURL取得に失敗しました")
+    return None
+
 def start_ngrok():
     # 既にngrokが起動しているか確認してURL取得
-    try:
-        res = requests.get("http://localhost:4040/api/tunnels")
-        tunnel_info = res.json()
-        public_url = tunnel_info['tunnels'][0]['public_url']
-        print("🌐 既存のngrok URL:", public_url)
-        return public_url
-    except:
-        pass  # 起動してない場合は下に進む
-
-    # 起動してなければ起動する
+    if get_public_url():
+        print("ngrokは既に起動済みです。")
+        return get_public_url()
+    
     subprocess.Popen([NGROK_PATH, "http", str(PORT)])
-    print("⏳ ngrok 起動中...（数秒待ちます）")
-    time.sleep(3)
+    print("ngrokを起動しました。URL取得中...")
 
-    # 再度取得トライ
-    try:
-        res = requests.get("http://localhost:4040/api/tunnels")
-        tunnel_info = res.json()
-        public_url = tunnel_info['tunnels'][0]['public_url']
-        print("🌐 公開URL:", public_url)
-        return public_url
-    except Exception as e:
-        print("❌ ngrokのURL取得に失敗:", e)
-        return None
+    return get_public_url_with_wait()
 
 def update_env_url(new_url: str, env_path="setting.env"):
     with open(env_path, "r", encoding="utf-8") as f:
@@ -48,3 +50,4 @@ def update_env_url(new_url: str, env_path="setting.env"):
 
     print(f"✅ {env_path} を更新: {new_url}/eventsub")
     load_dotenv(env_path, override=True)
+
