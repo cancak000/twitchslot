@@ -26,11 +26,11 @@ import sys
 
 def resource_path(relative_path):
     try:
-        # PyInstaller実行時
+        # PyInstallerで実行されているときは、展開ディレクトリを使う
         base_path = sys._MEIPASS
-    except Exception:
-        # スクリプト実行時
-        base_path = os.path.abspath(".")
+    except AttributeError:
+        # 通常のスクリプト実行時（Git構成）：srcから1階層上に移動
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     return os.path.join(base_path, relative_path)
 
 # SQLite接続はスレッドセーフに
