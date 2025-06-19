@@ -15,7 +15,7 @@ import os
 import traceback
 from PIL import Image, ImageTk
 from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN_USER
-
+import logging
 username_queue = queue.Queue()
 
 DEBUG = False
@@ -53,14 +53,34 @@ def get_score(username):
     row = cursor.fetchone()
     return row[0] if row else 0
 
-# Flask
+# Flask アプリのセットアップ
 app = Flask(__name__)
+app.config['DEBUG'] = False
+app.config['PROPAGATE_EXCEPTIONS'] = False
+
+# ログ設定
+logging.basicConfig(
+    filename="slot_game_log.txt",
+    level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    encoding="utf-8"
+)
+
+# GUIエラー用ログ設定
+def tk_exception_logger(exc, val, tb):
+    with open("slot_tkinter_error_log.txt", "w", encoding="utf-8") as f:
+        f.write("Tkinter 例外:\n")
+        f.write("".join(traceback.format_exception(exc, val, tb)))
+
 
 # GUI
 root = tk.Tk()
+root.report_callback_exception = tk_exception_logger
 root.title("iV Slot")
 root.geometry("520x300")
 root.configure(bg="black")
+status_label = tk.Label(root, text="初期化中...", font=("Helvetica", 14), bg="black", fg="white")
+status_label.grid(row=4, column=0, columnspan=3, pady=(10, 0))  # ← pack → grid に変更
 
 image_paths = {
     "GENIE": "image/jinny.png",
@@ -438,47 +458,51 @@ def list_routes():
 def start_flask_server():
     app.run(port=5000, use_reloader=False, threaded=True)
 
+# GUI処理などは別関数で定義（仮のもの）
+def start_flask_server():
+    app.run()
+
+def main():
+    from start_ngrok import start_ngrok, update_env_url
+    from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
+    from token_manager import refresh_user_token, get_app_token
+
+    logging.info("✅ スクリプト起動")
+    status_label.config(text="ngrok起動中...")
+
+    public_url = start_ngrok()
+    if public_url:
+        update_env_url(public_url)
+        status_label.config(text="トークン取得中...")
+
+        user_token = refresh_user_token()
+        app_token = get_app_token()
+
+        if not user_token or not app_token:
+            logging.error("❌ トークンの取得に失敗しました")
+            status_label.config(text="トークン取得失敗。終了します。")
+            root.after(3000, root.quit)
+            return
+
+        reward_ids = get_reward_ids(user_token)
+        delete_existing_matching_eventsubs(app_token, reward_ids)
+        register_eventsub(app_token, reward_ids)
+
+        threading.Thread(target=start_flask_server, daemon=True).start()
+
+        root.mainloop()  # ✅ GUIループをここで開始
+
+    else:
+        logging.error("❌ 公開URLの取得に失敗したため、起動を中止します。")
+        status_label.config(text="URL取得失敗。終了します。")
+        root.after(3000, root.quit)
+
 if __name__ == "__main__":
-    import threading
-    import traceback
-
     try:
-        from start_ngrok import start_ngrok, update_env_url
-        from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
-        from token_manager import refresh_user_token, get_app_token
-
-        app.config['DEBUG'] = False
-        app.config['PROPAGATE_EXCEPTIONS'] = False
-
-        print("✅ スクリプト起動")
-
-        # 🌐 ngrok起動してWebhook URL取得
-        public_url = start_ngrok()
-        if public_url:
-            update_env_url(public_url)
-
-            # ♻️ トークン更新
-            user_token = refresh_user_token()
-            app_token = get_app_token()
-
-            if not user_token or not app_token:
-                print("❌ トークンの取得に失敗しました")
-                sys.exit(1)
-
-            # 🎯 EventSubの再登録
-            reward_ids = get_reward_ids(user_token)
-            delete_existing_matching_eventsubs(app_token, reward_ids)
-            register_eventsub(app_token, reward_ids)
-
-            # Flaskサーバ起動
-            threading.Thread(target=start_flask_server, daemon=True).start()
-
-            # GUI起動
-            root.mainloop()
-        else:
-            print("❌ 公開URLの取得に失敗したため、起動を中止します。")
-
+        main()
     except Exception as e:
-        with open("slot_error_log.txt", "w", encoding="utf-8") as f:
-            f.write("エラー発生：\n")
+        with open("slot_crash_log.txt", "w", encoding="utf-8") as f:
+            f.write("【致命的エラー】\n")
             f.write(traceback.format_exc())
+        logging.critical("致命的な例外が発生しました", exc_info=True)
+        sys.exit(1)

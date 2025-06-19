@@ -1,14 +1,14 @@
 @echo off
-echo 🎰 TwitchSlot をビルドします...
+REM スロットアプリを exe 化
+REM image/ sound/ setting.env を含めてビルド
 
 pyinstaller ^
+  --noconfirm ^
   --onefile ^
-  --noconsole ^
-  --name twitchslot_gui ^
+  --windowed ^
   --add-data "image;image" ^
   --add-data "sound;sound" ^
   --add-data "setting.env;." ^
   src/slot_game_with_flask.py
 
-echo ✅ ビルド完了！distフォルダを確認してください。
 pause
