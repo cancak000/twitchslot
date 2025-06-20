@@ -18,6 +18,7 @@ def index():
 @app.route("/eventsub", methods=["POST"])
 def eventsub():
     try:
+        print("✅ POST 受信しました")
         message_id = request.headers.get("Twitch-Eventsub-Message-Id")
         timestamp = request.headers.get("Twitch-Eventsub-Message-Timestamp")
         message_type = request.headers.get("Twitch-Eventsub-Message-Type", "").lower()
@@ -27,6 +28,8 @@ def eventsub():
         hmac_message = message_id + timestamp + body
         expected = hmac.new(WEBHOOK_SECRET.encode(), hmac_message.encode(), hashlib.sha256).hexdigest()
         actual = signature_header.split("sha256=")[-1]
+
+        print("📦 受信内容:", request.json)
 
         if not hmac.compare_digest(expected, actual):
             print("\u274c 署名検証失敗")
@@ -42,7 +45,7 @@ def eventsub():
             reward_title = event["reward"]["title"]
             username = event["user_name"]
 
-            valid_titles = {"\u30b9\u30ed\u30c3\u30c8\u3092\u56de\u3059", "\u30b9\u30ed\u30c3\u30c8\u4e2d\u78ba\u7387", "\u30b9\u30ed\u30c3\u30c8\u5927\u5f53\u305f\u308a\u30d5\u30e9\u30b0"}
+            valid_titles = {"スロットを回す", "スロット中確率", "スロット大当たりフラグ"}
             if reward_title not in valid_titles:
                 print(f"\u26a0\ufe0f \u7121\u52b9\u306a\u30ea\u30ef\u30fc\u30c9\uff1a{reward_title}")
                 return "", 204

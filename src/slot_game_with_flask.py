@@ -13,14 +13,14 @@ from score_manager import add_score, get_score
 from slot_logic import check_combo, choose_weighted_result
 from sound_manager import get_sounds
 from flask_server import start_flask_server, username_queue
-from slot_animator import start_spin, spin_individual_reels
+from slot_animator import start_spin, spin_individual_reels, start_spin_with_user
 
 DEBUG = False
 
 loaded_images = load_images()
+sounds = get_sounds()
 reel_symbols = []
 slots = []
-
 
 canvas = tk.Canvas(root, width=520, height=300, bg="black", highlightthickness=0)
 canvas.place_forget()
@@ -42,7 +42,7 @@ def slot_queue_worker():
         try:
             username, force_level = username_queue.get()
             print(f"▶️ スロット順番待ち中: {username}")
-            root.after(0, lambda u=username, f=force_level: start_spin_with_user(u, f))
+            root.after(0, lambda u=username, f=force_level, s=sounds, up=update_label_with_image: start_spin_with_user(u, f, s, up))
             spin_lock.acquire()
             spin_lock.release()
             username_queue.task_done()
@@ -50,13 +50,6 @@ def slot_queue_worker():
             print("❌ キューワーカーエラー:", e)
 
 threading.Thread(target=slot_queue_worker, daemon=True).start()
-
-def start_spin_with_user(username, force_level=0):
-    acquired = spin_lock.acquire(timeout=2)
-    if not acquired:
-        print(f"⚠️ スロットがロック中：{username}はスキップされました")
-        return
-    threading.Thread(target=spin_individual_reels, args=(username, force_level)).start()
 
 # グローバルDEBUG切り替え用関数
 def toggle_debug():
@@ -88,7 +81,7 @@ def trigger_slot_spin(force_level=0):
     username_queue.put((username, force_level))
     if DEBUG:
         force_level = 3
-    root.after(0, lambda: start_spin(force_level, loaded_images=loaded_images, sounds=get_sounds, update_label_with_image=update_label_with_image))
+    root.after(0, lambda: start_spin(force_level, loaded_images=loaded_images, sounds=sounds, update_label_with_image=update_label_with_image))
 
 def main():
     from start_ngrok import start_ngrok, update_env_url

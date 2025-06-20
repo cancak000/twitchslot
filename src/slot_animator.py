@@ -75,3 +75,10 @@ def start_spin(force_level=0, loaded_images=None, sounds=None, update_label_with
 
     threading.Thread(target=spin_individual_reels, args=(
         username, force_level, loaded_images, sounds, update_label_with_image)).start()
+
+def start_spin_with_user(username, force_level=0, loaded_images=None, sounds=None, update_label_with_image=None):
+    acquired = spin_lock.acquire(timeout=2)
+    if not acquired:
+        print(f"⚠️ スロットがロック中：{username}はスキップされました")
+        return
+    threading.Thread(target=spin_individual_reels, args=(username, force_level, loaded_images, sounds, update_label_with_image)).start()
