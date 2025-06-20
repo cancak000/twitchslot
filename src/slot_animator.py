@@ -48,9 +48,9 @@ def spin_individual_reels(username="ゲスト", force_level=0, loaded_images=Non
             spin_reel(idx, symbol, delay_start=idx * 600)  # リールごとに600msずらし
 
         def show_result():
-            message, sound, score = check_combo(final)
+            message, sound_obj, score = check_combo(final)
             result_label.config(text=message)
-            sound.play()
+            sound_obj.play()
 
             if score >= 50:
                 flash_background()

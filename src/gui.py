@@ -141,4 +141,3 @@ def reset_backgrounds():
     root.configure(bg="black")
     for label in [username_label, result_label] + slots:
         label.configure(bg="black")
-
