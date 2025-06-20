@@ -10,11 +10,19 @@ from utils import resource_path
 conn = sqlite3.connect("slot_scores.db", check_same_thread=False)
 cursor = conn.cursor()
 
+slot_images = [None, None, None]
+
 # Tkinterルート作成
 root = tk.Tk()
 root.title("iV Slot")
-root.geometry("520x300")
+root.geometry("520x350")
 root.configure(bg="black")
+
+slots = []
+for i in range(3):
+    label = tk.Label(root, bg="black")
+    label.grid(row=1, column=i, padx=20, pady=(10, 0))
+    slots.append(label)
 
 # 例外ログ出力
 def tk_exception_logger(exc, val, tb):
@@ -64,6 +72,16 @@ def load_images():
         key: ImageTk.PhotoImage(Image.open(resource_path(path)).resize((128, 128)))
         for key, path in image_paths.items()
     }
+
+def update_label_with_image(label, image_key, reel_index=None):
+    path = resource_path(image_paths[image_key])
+    pil_img = Image.open(path).resize((128, 128))
+    img = ImageTk.PhotoImage(pil_img)
+
+    label.config(image=img)
+    label.image = img
+    if reel_index is not None:
+        slot_images[reel_index] = img
 
 def reset_backgrounds():
     root.configure(bg="black")

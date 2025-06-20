@@ -26,40 +26,48 @@ def reset_gui():
 def spin_individual_reels(username="ゲスト", force_level=0, loaded_images=None, sounds=None, update_label_with_image=None):
     try:
         reset_gui()
-
         root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
-        result_label.config(text="")
+        root.after(0, lambda: result_label.config(text=""))
+
         final = choose_weighted_result(force_level)
         reel_symbols = list(loaded_images.keys())
 
-        for reel, symbol in enumerate(final):
-            for i in range(10):
-                temp_symbol = random.choice(reel_symbols)
-                root.after(0, lambda r=reel, s=temp_symbol: update_label_with_image(slots[r], s))
-                time.sleep(0.05 + i * 0.0015)
-            root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
-            root.after(0, lambda: sounds["stop"].play())
-            time.sleep(0.1)
+        def spin_reel(reel_index, stop_symbol, delay_start=0):
+            def spin_step(i):
+                if i < 10:
+                    temp_symbol = random.choice(reel_symbols)
+                    update_label_with_image(slots[reel_index], temp_symbol, reel_index=reel_index)
+                    root.after(50, lambda: spin_step(i + 1))  # 50msごとに次
+                else:
+                    update_label_with_image(slots[reel_index], stop_symbol)
+                    sounds["stop"].play()
 
-        message, sound, score = check_combo(final)
-        root.after(0, lambda: result_label.config(text=message))
-        root.after(0, lambda: sound.play())
+            root.after(delay_start, lambda: spin_step(0))
 
-        if score >= 50:
-            flash_background()
-            blink_reels()
-            explosion_effect()
-        elif score >= 10:
-            blink_reels()
-            flash_background()
-        elif score > 0:
-            blink_reels(times=2, interval=100)
+        for idx, symbol in enumerate(final):
+            spin_reel(idx, symbol, delay_start=idx * 600)  # リールごとに600msずらし
 
-        add_score(username, score)
+        def show_result():
+            message, sound, score = check_combo(final)
+            result_label.config(text=message)
+            sound.play()
+
+            if score >= 50:
+                flash_background()
+                blink_reels()
+                explosion_effect()
+            elif score >= 10:
+                blink_reels()
+                flash_background()
+            elif score > 0:
+                blink_reels(times=2, interval=100)
+
+            add_score(username, score)
+
+        root.after(2000, show_result)
 
     finally:
-        spin_lock.release()
-
+        root.after(2500, spin_lock.release)
 
 def start_spin(force_level=0, loaded_images=None, sounds=None, update_label_with_image=None):
     
