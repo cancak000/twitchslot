@@ -6,6 +6,8 @@ import sys
 import logging
 import traceback
 import random
+import time
+import requests
 
 from utils import resource_path
 from gui import root, canvas, username_label, result_label, status_label, flash_background, blink_reels, explosion_effect, load_images, show_ranking_window, update_label_with_image
@@ -16,6 +18,7 @@ from flask_server import start_flask_server, username_queue
 from slot_animator import start_spin, spin_individual_reels, start_spin_with_user
 
 DEBUG = False
+
 
 loaded_images = load_images()
 sounds = get_sounds()
@@ -67,6 +70,20 @@ def trigger_slot_spin(force_level=0):
     username = "🎮手動プレイヤー"
     root.after(0, lambda: start_spin_with_user(username, force_level, loaded_images, sounds, update_label_with_image))
 
+# ✅ Flask準備を確認する関数
+def wait_for_flask_ready(url, timeout=5):
+    for i in range(timeout * 10):
+        try:
+            r = requests.get(url)
+            if r.status_code in {200, 405}:
+                print(f"✅ Flask準備完了（試行{i+1}回目）")
+                return True
+        except Exception as e:
+            print(f"❌ Flask接続失敗（試行{i+1}回目）: {e}")
+        time.sleep(0.1)
+    print("❌ Flaskが起動しませんでした")
+    return False
+
 def main():
     from start_ngrok import start_ngrok, update_env_url
     from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
@@ -75,13 +92,6 @@ def main():
     global loaded_images, reel_symbols
     loaded_images = load_images()
     reel_symbols = list(loaded_images.keys())
-
-    # スロットリール画像を作成
-#    for i in range(3):
-#        label = tk.Label(root, image=loaded_images["GENIE"], bg="black")
-#        label.image = loaded_images["GENIE"]  # 参照保持
-#        label.grid(row=1, column=i, padx=20, pady=(10, 0))
-#        slots.append(label)
 
     # 🔘 スロットを回すボタン（ユーザー手動用）
     spin_button = tk.Button(root, text="🎰 スロットを回す", font=("Helvetica", 12, "bold"),
@@ -98,7 +108,25 @@ def main():
     if public_url:
         update_env_url(public_url)
         status_label.config(text="トークン取得中...")
+        time.sleep(1.5) # 少し待機してからGUI更新
 
+        # 🔁 .envファイルをここで再読込して、最新のTWITCH_CALLBACK_URLを反映
+        from dotenv import load_dotenv
+        load_dotenv("setting.env", override=True)
+
+        threading.Thread(target=start_flask_server, daemon=True).start()
+        status_label.config(text="Flask起動中")
+
+
+        # 3. Flaskが準備できるまで待つ（HTTPで確認）
+        flask_ready = wait_for_flask_ready(f"{public_url}/eventsub")
+        if not flask_ready:
+            status_label.config(text="Flask起動失敗")
+            root.after(3000, root.quit)
+            return
+
+
+        status_label.config(text="トークン取得中...")
         user_token = refresh_user_token()
         app_token = get_app_token()
 
@@ -111,8 +139,7 @@ def main():
         reward_ids = get_reward_ids(user_token)
         delete_existing_matching_eventsubs(app_token, reward_ids)
         register_eventsub(app_token, reward_ids)
-
-        threading.Thread(target=start_flask_server, daemon=True).start()
+        status_label.config(text="EventSub登録完了")
 
         root.mainloop()  # ✅ GUIループをここで開始
 
