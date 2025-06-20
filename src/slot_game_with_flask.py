@@ -8,7 +8,7 @@ import traceback
 import random
 
 from utils import resource_path
-from gui import root, canvas, username_label, result_label, slots, status_label, flash_background, blink_reels, explosion_effect, load_images, show_ranking_window
+from gui import root, canvas, username_label, result_label, status_label, flash_background, blink_reels, explosion_effect, load_images, show_ranking_window, update_label_with_image
 from score_manager import add_score, get_score
 from slot_logic import check_combo, choose_weighted_result
 from sound_manager import get_sounds
@@ -24,11 +24,6 @@ reel_symbols = []
 canvas = tk.Canvas(root, width=520, height=300, bg="black", highlightthickness=0)
 canvas.place_forget()
 
-
-def reset_backgrounds():
-    root.configure(bg="black")
-    for label in [username_label, result_label] + slots:
-        label.configure(bg="black")
 
 # 🔁 スロット演出を順番に処理するワーカー
 def slot_queue_worker():
@@ -82,11 +77,11 @@ def main():
     reel_symbols = list(loaded_images.keys())
 
     # スロットリール画像を作成
-    for i in range(3):
-        label = tk.Label(root, image=loaded_images["GENIE"], bg="black")
-        label.image = loaded_images["GENIE"]  # 参照保持
-        label.grid(row=1, column=i, padx=20, pady=(10, 0))
-        slots.append(label)
+#    for i in range(3):
+#        label = tk.Label(root, image=loaded_images["GENIE"], bg="black")
+#        label.image = loaded_images["GENIE"]  # 参照保持
+#        label.grid(row=1, column=i, padx=20, pady=(10, 0))
+#        slots.append(label)
 
     # 🔘 スロットを回すボタン（ユーザー手動用）
     spin_button = tk.Button(root, text="🎰 スロットを回す", font=("Helvetica", 12, "bold"),
@@ -127,7 +122,6 @@ def main():
         root.after(3000, root.quit)
 
     status_label.config(text="")
-
 
 if __name__ == "__main__":
     try:

@@ -19,10 +19,6 @@ root.geometry("520x350")
 root.configure(bg="black")
 
 slots = []
-for i in range(3):
-    label = tk.Label(root, bg="black")
-    label.grid(row=1, column=i, padx=20, pady=(10, 0))
-    slots.append(label)
 
 # 例外ログ出力
 def tk_exception_logger(exc, val, tb):
@@ -44,12 +40,6 @@ username_label.grid(row=0, column=0, columnspan=3, pady=(10, 0))
 result_label = tk.Label(root, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
 result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
 
-# スロット画像を表示するラベル（画像は後から設定）
-slots = []
-for i in range(3):
-    label = tk.Label(root, bg="black")
-    label.grid(row=1, column=i, padx=20, pady=(10, 0))
-    slots.append(label)
 
 # 背景用Canvas（爆発用）
 canvas = tk.Canvas(root, width=520, height=300, bg="black", highlightthickness=0)
@@ -72,6 +62,14 @@ def load_images():
         key: ImageTk.PhotoImage(Image.open(resource_path(path)).resize((128, 128)))
         for key, path in image_paths.items()
     }
+
+loaded_images = load_images()
+
+# スロット画像を表示するラベル（画像は後から設定）
+for i in range(3):
+    label = tk.Label(root, image=loaded_images["GENIE"], bg="black")
+    label.grid(row=1, column=i, padx=20, pady=(10, 0))
+    slots.append(label)
 
 def update_label_with_image(label, image_key, reel_index=None):
     path = resource_path(image_paths[image_key])
