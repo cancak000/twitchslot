@@ -138,3 +138,9 @@ def show_ranking_window():
         entry = f"{i}. {user}：{score} 点"
         tk.Label(ranking_win, text=entry, font=("Helvetica", 12),
                  bg="black", fg="white").pack(anchor="w", padx=20)
+
+def reset_backgrounds():
+    root.configure(bg="black")
+    for label in [username_label, result_label] + slots:
+        label.configure(bg="black")
+

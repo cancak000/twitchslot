@@ -8,7 +8,7 @@ import traceback
 import random
 
 from utils import resource_path
-from gui import flash_background, blink_reels, explosion_effect, show_ranking_window, load_images, status_label, root
+from gui import root, canvas, username_label, result_label, slots, status_label, flash_background, blink_reels, explosion_effect, load_images, show_ranking_window
 from score_manager import add_score, get_score
 from slot_logic import check_combo, choose_weighted_result
 from sound_manager import get_sounds
@@ -20,7 +20,6 @@ DEBUG = False
 loaded_images = load_images()
 sounds = get_sounds()
 reel_symbols = []
-slots = []
 
 canvas = tk.Canvas(root, width=520, height=300, bg="black", highlightthickness=0)
 canvas.place_forget()
@@ -30,11 +29,6 @@ def reset_backgrounds():
     root.configure(bg="black")
     for label in [username_label, result_label] + slots:
         label.configure(bg="black")
-
-def update_label_with_image(label, image_key):
-    label.config(image=loaded_images[image_key])
-    label.image = loaded_images[image_key]
-
 
 # 🔁 スロット演出を順番に処理するワーカー
 def slot_queue_worker():
@@ -74,14 +68,9 @@ spin_lock = threading.Lock()
 def trigger_slot_spin(force_level=0):
     if DEBUG:
         force_level = 3
-    try:
-        username = username_queue.get_nowait()
-    except queue.Empty:
-        return
-    username_queue.put((username, force_level))
-    if DEBUG:
-        force_level = 3
-    root.after(0, lambda: start_spin(force_level, loaded_images=loaded_images, sounds=sounds, update_label_with_image=update_label_with_image))
+
+    username = "🎮手動プレイヤー"
+    root.after(0, lambda: start_spin_with_user(username, force_level, loaded_images, sounds, update_label_with_image))
 
 def main():
     from start_ngrok import start_ngrok, update_env_url
@@ -98,6 +87,11 @@ def main():
         label.image = loaded_images["GENIE"]  # 参照保持
         label.grid(row=1, column=i, padx=20, pady=(10, 0))
         slots.append(label)
+
+    # 🔘 スロットを回すボタン（ユーザー手動用）
+    spin_button = tk.Button(root, text="🎰 スロットを回す", font=("Helvetica", 12, "bold"),
+                            command=lambda: trigger_slot_spin(force_level=0))
+    spin_button.grid(row=3, column=0, pady=(0, 10))
 
     ranking_button = tk.Button(root, text="🏆 ランキングを見る", font=("Helvetica", 10), command=show_ranking_window)
     ranking_button.grid(row=3, column=1, pady=(0, 10))
@@ -132,6 +126,9 @@ def main():
         status_label.config(text="URL取得失敗。終了します。")
         root.after(3000, root.quit)
 
+    status_label.config(text="")
+
+
 if __name__ == "__main__":
     try:
         main()
@@ -141,3 +138,7 @@ if __name__ == "__main__":
             f.write(traceback.format_exc())
         logging.critical("致命的な例外が発生しました", exc_info=True)
         sys.exit(1)
+    finally:
+        from start_ngrok import stop_ngrok
+        stop_ngrok()  # ←ここで即実行する
+        logging.info("🛑 ngrok停止処理を実行しました")
