@@ -1,10 +1,7 @@
 import pygame
 from utils import resource_path
 
-# pygameミキサー初期化
 pygame.mixer.init()
-
-# サウンドファイルの読み込み
 stop_sound = pygame.mixer.Sound(resource_path("sound/stop.mp3"))
 big_sound = pygame.mixer.Sound(resource_path("sound/big_win.mp3"))
 small_sound = pygame.mixer.Sound(resource_path("sound/small_win.mp3"))

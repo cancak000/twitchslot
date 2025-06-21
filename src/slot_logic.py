@@ -1,11 +1,13 @@
 import random
 from sound_manager import get_sounds
-# スロットシンボル一覧（呼び出し元でセットする想定）
+
 reel_symbols = [
     "GENIE", "PALACE", "MOON", "LAMP",
     "CARPET", "COIN", "SCORPION", "CAMEL"
 ]
 sounds = get_sounds()
+
+
 def check_combo(combo):
     if combo == ["GENIE"] * 3:
         return "🎊 ジーニー揃い！", sounds["big"], 100
@@ -26,11 +28,11 @@ def semi_match_combo():
     combo = [base, base, diff]
     random.shuffle(combo)
     return combo
-
+    
 def choose_weighted_result(force_level):
     roll = random.random()
 
-    if force_level == 3:
+    if force_level == 3:  # 超高確率
         if roll < 0.25:
             return ["GENIE"] * 3
         elif roll < 0.5:
@@ -39,7 +41,7 @@ def choose_weighted_result(force_level):
             return ["CAMEL"] * 3
         elif roll < 0.90:
             return semi_match_combo()
-    elif force_level == 2:
+    elif force_level == 2:  # 高確率
         if roll < 0.15:
             return ["GENIE"] * 3
         elif roll < 0.35:
@@ -48,7 +50,7 @@ def choose_weighted_result(force_level):
             return ["CAMEL"] * 3
         elif roll < 0.75:
             return semi_match_combo()
-    elif force_level == 1:
+    elif force_level == 1:  # 中確率
         if roll < 0.1:
             return ["GENIE"] * 3
         elif roll < 0.25:
@@ -58,4 +60,5 @@ def choose_weighted_result(force_level):
         elif roll < 0.6:
             return semi_match_combo()
 
+    # 通常 or ハズレ
     return [random.choice(reel_symbols) for _ in range(3)]
