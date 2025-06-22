@@ -1,6 +1,10 @@
-# flask_server.py
 from flask import Flask, request
-import json, hmac, hashlib, traceback
+from utils import setup_logger
+import logging
+# ロガー設定
+flask_logger = setup_logger(name="flask_server", log_file="slot_game.log")
+
+import json, hmac, hashlib, time, requests
 import logging
 from config import WEBHOOK_SECRET
 from queue import Queue
@@ -10,6 +14,18 @@ username_queue = Queue()
 
 # Flask アプリ
 app = Flask(__name__)
+
+def wait_for_flask_ready(public_url, timeout=10):
+    for i in range(timeout):
+        try:
+            res = requests.options(public_url)
+            if res.status_code in [200, 405]:
+                logging.info(f"✅ Flask /eventsub 応答確認成功（{i+1}回目）")
+                return True
+        except requests.RequestException:
+            logging.info(f"⏳ Flask起動待機中…（{i+1}/{timeout}）")
+            time.sleep(1)
+    raise RuntimeError("❌ Flask /eventsub が起動しませんでした")
 
 @app.route("/", methods=["GET"])
 def index():

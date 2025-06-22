@@ -41,7 +41,8 @@ def delete_existing_matching_eventsubs(app_token, reward_ids):
                 print(f"🧹 削除済: {sub_id}, status={res.status_code}")
 
 
-def register_eventsub(app_token, reward_ids):
+def register_eventsub(app_token, reward_ids, public_url: str):
+    new_url = f"{public_url}/eventsub"
     headers = {
         "Client-ID": CLIENT_ID,
         "Authorization": f"Bearer {app_token}",
@@ -59,7 +60,7 @@ def register_eventsub(app_token, reward_ids):
             },
             "transport": {
                 "method": "webhook",
-                "callback": TWITCH_CALLBACK_URL,
+                "callback": new_url,
                 "secret": WEBHOOK_SECRET
             }
         }
@@ -68,9 +69,6 @@ def register_eventsub(app_token, reward_ids):
         if res.status_code == 202:
             print(f"✅ 登録成功: reward_id = {reward_id}")
         else:
-            print("=====================")
-            print(TWITCH_CALLBACK_URL)
-            print("=====================")
             print(f"❌ 登録失敗: reward_id = {reward_id}, {res.status_code} {res.text}")
 
 

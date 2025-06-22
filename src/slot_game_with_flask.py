@@ -4,11 +4,6 @@ import random
 import time
 import threading
 import queue
-from flask import Flask, request
-import json
-import hmac
-import hashlib
-import os
 import traceback
 from PIL import Image, ImageTk
 from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN_USER
@@ -23,19 +18,8 @@ DEBUG = False
 
 # 
 import sys
-
-# Flask アプリのセットアップ
-app = Flask(__name__)
-app.config['DEBUG'] = False
-app.config['PROPAGATE_EXCEPTIONS'] = False
-
-# ログ設定
-logging.basicConfig(
-    filename="slot_game_log.txt",
-    level=logging.DEBUG,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    encoding="utf-8"
-)
+from utils import setup_logger
+logger = setup_logger("slot_game_with_flask", "slot_game.log", level=logging.INFO)
 
 sounds = get_sounds()
 spin_lock = threading.Lock()
@@ -135,117 +119,65 @@ def semi_match_combo():
     random.shuffle(combo)
     return combo
 
-@app.route("/", methods=["GET"])
-def index():
-    with open("log.txt", "a", encoding="utf-8") as f:
-        f.write("GET iVTest \n")
-    return "iV Slot EventSub Webhook is running!"
-
-@app.route("/eventsub", methods=["POST"])
-def eventsub():
-    with open("log.txt", "a", encoding="utf-8") as f:
-        f.write("POST iVTest \n")
-    try:
-        message_id = request.headers.get("Twitch-Eventsub-Message-Id")
-        timestamp = request.headers.get("Twitch-Eventsub-Message-Timestamp")
-        message_type = request.headers.get("Twitch-Eventsub-Message-Type", "").lower()
-        signature_header = request.headers.get("Twitch-Eventsub-Message-Signature", "")
-        body = request.data.decode("utf-8")
-        print("====")
-        print(body)
-        try:
-            body_json = json.loads(body)
-        except Exception as e:
-            print(e)
-        hmac_message = message_id + timestamp + body
-        expected = hmac.new(WEBHOOK_SECRET.encode(), hmac_message.encode(), hashlib.sha256).hexdigest()
-        actual = signature_header.split("sha256=")[-1]
-        if not hmac.compare_digest(expected, actual):
-            print("❌ 署名検証失敗")
-            return "Invalid signature", 403
-        body_json = json.loads(body)
-        if message_type == "webhook_callback_verification":
-            print("✅ EventSub 登録確認")
-            return body_json["challenge"], 200
-        
-        if message_type == "notification":
-            event = body_json["event"]
-            reward_title = event["reward"]["title"]
-            reward_cost = event["reward"]["cost"]
-
-            # 🎯 対象のリワード名だけ許可
-            valid_titles = {"スロットを回す", "スロット中確率", "スロット大当たりフラグ"}
-            if reward_title not in valid_titles:
-                print(f"⚠️ 無効なリワード「{reward_title}」は無視されました")
-                return "", 204
-
-            if reward_title == "スロット大当たりフラグ":
-                force_level = 3
-            elif reward_title == "スロット中確率":
-                force_level = 2
-            else:
-                force_level = 0
-
-            username = event["user_name"]
-            print(f"🎮 {username} が「{reward_title}」({reward_cost}pt) を使用！ force_level={force_level}")
-            username_queue.put((username, force_level))
-            return "", 200
-
-        print("通知を受信:", body_json)
-        return "", 204
-    except Exception as e:
-        print("❌ エラー発生:", e)
-        traceback.print_exc()
-        return "Internal Server Error", 500
-
-@app.route("/routes")
-def list_routes():
-    output = []
-    for rule in app.url_map.iter_rules():
-        output.append(f"{rule.methods} {rule.rule}")
-    return "<br>".join(output)
-
-def start_flask_server():
-    app.run(port=5000, use_reloader=False, threaded=True)
-
-# GUI処理などは別関数で定義（仮のもの）
-def start_flask_server():
-    app.run()
-
 def main():
-    from start_ngrok import start_ngrok, update_env_url
-    from eventsub_manager import get_reward_ids, register_eventsub, delete_existing_matching_eventsubs
-    from token_manager import refresh_user_token, get_app_token
+    import threading
+    import time
+    from start_ngrok import (
+        start_ngrok,
+        wait_for_ngrok_ready,
+        update_env_url,
+    )
+    from eventsub_manager import (
+        get_reward_ids,
+        register_eventsub,
+        delete_existing_matching_eventsubs,
+    )
+    from token_manager import (
+        refresh_user_token,
+        get_app_token,
+    )
+    from flask_server import start_flask_server, wait_for_flask_ready
 
-    logging.info("✅ スクリプト起動")
-    status_label.config(text="ngrok起動中...")
+    logger.info("✨ 起動中...")
 
+    # トークン取得（早めにしておく）
+    user_token = refresh_user_token()
+    app_token = get_app_token()
+
+    if not user_token or not app_token:
+        logger.error("❌ トークン取得に失敗しました。終了します。")
+        return
+
+    # ngrok 起動 → URL取得
     public_url = start_ngrok()
-    if public_url:
-        update_env_url(public_url)
-        status_label.config(text="トークン取得中...")
+    if not public_url:
+        logger.error("❌ ngrok URLの取得に失敗しました。終了します。")
+        return
 
-        user_token = refresh_user_token()
-        app_token = get_app_token()
+    # .env 更新 & 再読み込み
+    update_env_url(public_url)
+    from dotenv import load_dotenv
+    load_dotenv("setting.env", override=True)
 
-        if not user_token or not app_token:
-            logging.error("❌ トークンの取得に失敗しました")
-            status_label.config(text="トークン取得失敗。終了します。")
-            root.after(3000, root.quit)
-            return
+    # Flask サーバを別スレッドで起動
+    flask_thread = threading.Thread(target=start_flask_server, daemon=True)
+    flask_thread.start()
 
-        reward_ids = get_reward_ids(user_token)
-        delete_existing_matching_eventsubs(app_token, reward_ids)
-        register_eventsub(app_token, reward_ids)
+    # Flask の /eventsub が立ち上がるのを待つ
+    wait_for_flask_ready("http://localhost:5000/eventsub", timeout=10)
 
-        threading.Thread(target=start_flask_server, daemon=True).start()
+    # ngrok 越しでアクセスできるか確認
+    wait_for_ngrok_ready(public_url, timeout=10)
 
-        root.mainloop()  # ✅ GUIループをここで開始
+    # EventSub 登録
+    reward_ids = get_reward_ids(user_token)
+    delete_existing_matching_eventsubs(app_token, reward_ids)
+    register_eventsub(app_token, reward_ids, public_url)
+    logger.info("✅ EventSubの登録が完了しました")
 
-    else:
-        logging.error("❌ 公開URLの取得に失敗したため、起動を中止します。")
-        status_label.config(text="URL取得失敗。終了します。")
-        root.after(3000, root.quit)
+    # GUI ループ開始
+    logger.info("🖥️ GUI を起動します")
+    root.mainloop()
 
 if __name__ == "__main__":
     try:
@@ -256,3 +188,10 @@ if __name__ == "__main__":
             f.write(traceback.format_exc())
         logging.critical("致命的な例外が発生しました", exc_info=True)
         sys.exit(1)
+    finally:
+        from start_ngrok import stop_ngrok
+        logging.info("🛑 スロットゲームを終了します")
+
+        stop_ngrok()    
+        root.quit()
+        sys.exit(0) 
