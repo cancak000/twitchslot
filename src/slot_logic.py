@@ -33,14 +33,16 @@ def choose_weighted_result(force_level):
     roll = random.random()
 
     if force_level == 3:  # 超高確率
-        if roll < 0.25:
+        if roll < 0.9:
             return ["GENIE"] * 3
-        elif roll < 0.5:
+        elif roll < 0.8:
             return ["COIN"] * 3
         elif roll < 0.75:
             return ["CAMEL"] * 3
-        elif roll < 0.90:
+        elif roll < 0.01:
             return semi_match_combo()
+        else :
+            return ["GENIE"] * 3
     elif force_level == 2:  # 高確率
         if roll < 0.15:
             return ["GENIE"] * 3

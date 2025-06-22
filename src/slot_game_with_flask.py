@@ -10,7 +10,7 @@ from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN
 import logging
 username_queue = queue.Queue()
 
-from gui import root, canvas, slots, username_label, loaded_images, result_label, status_label, flash_background, blink_reels, explosion_effect, show_ranking_window
+from gui import root, slot_window, canvas, slots, username_label, loaded_images, result_label, status_label, flash_background, blink_reels, explosion_effect, show_ranking_window
 from sound_manager import get_sounds
 from score_manager import add_score
 from slot_logic import check_combo, choose_weighted_result
@@ -29,12 +29,12 @@ spin_lock = threading.Lock()
 reel_symbols = list(loaded_images.keys())
 
 for i in range(3):
-    label = tk.Label(root, image=loaded_images["GENIE"], bg="black")
+    label = tk.Label(slot_window, image=loaded_images["GENIE"], bg="black")
     label.image = loaded_images["GENIE"]
     label.grid(row=1, column=i, padx=20, pady=(10, 0))
     slots.append(label)
 
-ranking_button = tk.Button(root, text="🏆 ランキングを見る", font=("Helvetica", 10),
+ranking_button = tk.Button(slot_window, text="🏆 ランキングを見る", font=("Helvetica", 10),
                            command=lambda: show_ranking_window())
 ranking_button.grid(row=3, column=1, pady=(0, 10))
 
@@ -46,7 +46,7 @@ def slot_queue_worker():
             print(f"▶️ スロット順番待ち中: {username}")
             if DEBUG:
                 force_level = 3
-            root.after(0, lambda u=username, f=force_level, r=reel_symbols, s=sounds : start_spin_with_user(root, slots, u, f, r, s))
+            slot_window.after(0, lambda u=username, f=force_level, r=reel_symbols, s=sounds : start_spin_with_user(root, slots, u, f, r, s))
             spin_lock.acquire()
             spin_lock.release()
             username_queue.task_done()
@@ -68,9 +68,13 @@ debug_button = tk.Button(root, text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}", f
                          command=toggle_debug)
 debug_button.grid(row=3, column=2, pady=(0, 10))
 
+def manual_spin():
+    force = 3 if DEBUG else 0
+    start_spin_with_user(root, slots, "手動プレイヤー", force, reel_symbols, sounds)
+
 # 手動でスロットを回すボタン
 manual_button = tk.Button(root, text="🎰 手動でスロットを回す", font=("Helvetica", 10),
-                          command=lambda: start_spin_with_user(root, slots, "手動プレイヤー", 0, reel_symbols, sounds))
+                          command=manual_spin)
 manual_button.grid(row=3, column=0, pady=(0, 10))
 
 def main():
@@ -148,4 +152,5 @@ if __name__ == "__main__":
 
         stop_ngrok()    
         root.quit()
+        slot_window.quit()
         sys.exit(0) 

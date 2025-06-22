@@ -1,7 +1,7 @@
 import time
 import random
 import threading
-from gui import canvas, username_label, result_label, update_label_with_image, flash_background, blink_reels, explosion_effect
+from gui import canvas, username_label, result_label, update_label_with_image, flash_background, blink_reels, explosion_effect, bring_to_front, hide_window
 from slot_logic import check_combo, choose_weighted_result
 from score_manager import add_score
 import queue
@@ -25,6 +25,7 @@ def reset_gui(root, slots):
 
 def spin_individual_reels(root, slots, username="ゲスト", force_level=0, reel_symbols=None, sounds=None ):
     try:
+        bring_to_front() 
         reset_gui(root, slots)
         root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
         root.after(0, lambda: result_label.config(text=""))
@@ -56,11 +57,14 @@ def spin_individual_reels(root, slots, username="ゲスト", force_level=0, reel
                 blink_reels(times=2, interval=100)
 
             add_score(username, score)
-
+            root.after(3000, lambda: reset_gui(root, slots))
+            root.after(5000, hide_window)  # 結果表示から2秒後にウィンドウを閉じる
         root.after(1000, show_result)
 
     finally:
         root.after(2500, spin_lock.release)
+        # 🎯 一定時間後に初期状態へリセット（3秒後）
+        root.after(6000, lambda: reset_gui(root, slots))
 
 def start_spin_with_user(root, slots,username, force_level=0, reel_symbols=None, sounds=None):
     acquired = spin_lock.acquire(timeout=2)

@@ -18,11 +18,19 @@ cursor = conn.cursor()
 
 slot_images = [None, None, None]
 
-# GUI
+# 🎮 メインウィンドウ（常時表示：操作パネル用）
 root = tk.Tk()
-root.title("iV Slot")
-root.geometry("520x300")
-root.configure(bg="black")
+root.title("iV Slot Control Panel")
+root.geometry("300x100")
+root.configure(bg="gray20")
+
+# 🎰 スロット表示用ウィンドウ（非表示からスタート）
+slot_window = Toplevel(root)
+slot_window.title("iV Slot")
+slot_window.geometry("520x300")
+slot_window.configure(bg="black")
+slot_window.withdraw()  # ← 初期は非表示
+slot_window.iconify() # アイコン化しておく
 
 slots = []
 
@@ -34,17 +42,18 @@ def tk_exception_logger(exc, val, tb):
 
 root.report_callback_exception = tk_exception_logger
 
-status_label = tk.Label(root, text="初期化中...", font=("Helvetica", 14), bg="black", fg="white")
+canvas = tk.Canvas(slot_window, width=520, height=300, bg="black", highlightthickness=0)
+canvas.place_forget()
+
+status_label = tk.Label(slot_window, text="初期化中...", font=("Helvetica", 14), bg="black", fg="white")
 status_label.grid(row=4, column=0, columnspan=3, pady=(10, 0))
 
-result_label = tk.Label(root, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
+result_label = tk.Label(slot_window, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
 result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
 
-username_label = tk.Label(root, text="", font=("Helvetica", 14, "bold"), bg="black", fg="cyan")
+username_label = tk.Label(slot_window, text="", font=("Helvetica", 14, "bold"), bg="black", fg="cyan")
 username_label.grid(row=0, column=0, columnspan=3, pady=(10, 0))
 
-canvas = tk.Canvas(root, width=520, height=300, bg="black", highlightthickness=0)
-canvas.place_forget()
 
 
 image_paths = {
@@ -68,20 +77,20 @@ def update_label_with_image(label, image_key):
     label.image = loaded_images[image_key]
 
 def reset_backgrounds():
-    root.configure(bg="black")
+    slot_window.configure(bg="black")
     for label in [username_label, result_label] + slots:
         label.configure(bg="black")
 
 def flash_background(times=6, interval=150):
     def toggle(i):
         bg_color = "white" if i % 2 == 0 else "black"
-        root.configure(bg=bg_color)
+        slot_window.configure(bg=bg_color)
         for label in [username_label, result_label] + slots:
             label.configure(bg=bg_color)
         if i < times:
-            root.after(interval, toggle, i + 1)
+            slot_window.after(interval, toggle, i + 1)
         else:
-            root.after(interval, reset_backgrounds)
+            slot_window.after(interval, reset_backgrounds)
     toggle(0)
 
 
@@ -90,12 +99,12 @@ def blink_reels(times=6, interval=150):
         for label in slots:
             label.grid_remove() if i % 2 == 0 else label.grid()
         if i < times:
-            root.after(interval, toggle, i + 1)
+            slot_window.after(interval, toggle, i + 1)
     toggle(0)
 
 def explosion_effect(duration=800):
     def draw_explosion():
-        canvas.lift(root)  # 明示的に root の中で最前面へ
+        canvas.lift(slot_window)  # 明示的に root の中で最前面へ
         canvas.place(x=0, y=0)
         canvas.delete("all")
         for i in range(20):
@@ -104,11 +113,11 @@ def explosion_effect(duration=800):
             y = 150 + 200 * math.sin(math.radians(angle))
             canvas.create_line(260, 150, x, y, fill="yellow", width=2)
         canvas.create_oval(240, 130, 280, 170, fill="gold", outline="white")
-        root.after(duration, lambda: canvas.place_forget())
-    root.after(0, draw_explosion)
+        slot_window.after(duration, lambda: canvas.place_forget())
+    slot_window.after(0, draw_explosion)
 
 def show_ranking_window():
-    ranking_win = tk.Toplevel(root)
+    ranking_win = tk.Toplevel(slot_window)
     ranking_win.title("スコアランキング")
     ranking_win.configure(bg="black")
     ranking_win.geometry("300x300")
@@ -124,3 +133,12 @@ def show_ranking_window():
         tk.Label(ranking_win, text=entry, font=("Helvetica", 12),
                  bg="black", fg="white").pack(anchor="w", padx=20)
 
+def bring_to_front():
+    slot_window.deiconify()
+    slot_window.lift()
+    slot_window.attributes('-topmost', True)
+    slot_window.after(1000, lambda: slot_window.attributes('-topmost', False))
+
+def hide_window():
+    slot_window.withdraw()      # ウィンドウを非表示にする（完全に隠れる）
+    slot_window.iconify()
