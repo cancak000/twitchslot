@@ -19,7 +19,7 @@ DEBUG = False
 # 
 import sys
 from utils import setup_logger
-logger = setup_logger("slot_game_with_flask", "slot_game.log", level=logging.INFO)
+logger = setup_logger("slot_game_with_flask", "logs/slot_game_with_flask.log", level=logging.INFO)
 
 sounds = get_sounds()
 spin_lock = threading.Lock()
