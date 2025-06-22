@@ -6,6 +6,12 @@ import sqlite3
 from PIL import Image, ImageTk
 from utils import resource_path
 
+import logging
+from utils import setup_logger
+
+logger = setup_logger("gui", "logs/gui.log", level=logging.INFO)
+
+
 # SQLite接続（スコア表示用）
 conn = sqlite3.connect("slot_scores.db", check_same_thread=False)
 cursor = conn.cursor()

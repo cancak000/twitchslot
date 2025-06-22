@@ -7,10 +7,8 @@ flask_logger = setup_logger(name="flask_server", log_file="slot_game.log")
 import json, hmac, hashlib, time, requests
 import logging
 from config import WEBHOOK_SECRET
-from queue import Queue
-
+from slot_game_with_flask import username_queue  # スロットゲームのキューをインポート
 # 外部に共有するキュー（main側と共有するため）
-username_queue = Queue()
 
 # Flask アプリ
 app = Flask(__name__)

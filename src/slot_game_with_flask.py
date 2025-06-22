@@ -10,10 +10,11 @@ from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN
 import logging
 username_queue = queue.Queue()
 
-from gui import root, canvas, slots, username_label, loaded_images, result_label, status_label, update_label_with_image, flash_background, blink_reels, explosion_effect, show_ranking_window
+from gui import root, canvas, slots, username_label, loaded_images, result_label, status_label, flash_background, blink_reels, explosion_effect, show_ranking_window
 from sound_manager import get_sounds
 from score_manager import add_score
 from slot_logic import check_combo, choose_weighted_result
+from slot_animator import start_spin_with_user
 DEBUG = False
 
 # 
@@ -43,7 +44,9 @@ def slot_queue_worker():
         try:
             username, force_level = username_queue.get()
             print(f"▶️ スロット順番待ち中: {username}")
-            root.after(0, lambda u=username, f=force_level: start_spin_with_user(u, f))
+            if DEBUG:
+                force_level = 3
+            root.after(0, lambda u=username, f=force_level, r=reel_symbols, s=sounds : start_spin_with_user(root, slots, u, f, r, s))
             spin_lock.acquire()
             spin_lock.release()
             username_queue.task_done()
@@ -52,54 +55,6 @@ def slot_queue_worker():
 
 threading.Thread(target=slot_queue_worker, daemon=True).start()
 
-def start_spin_with_user(username, force_level=0):
-    acquired = spin_lock.acquire(timeout=2)
-    if not acquired:
-        print(f"⚠️ スロットがロック中：{username}はスキップされました")
-        return
-    threading.Thread(target=spin_individual_reels_with_user, args=(username, force_level)).start()
-
-def spin_individual_reels_with_user(username, force_level=0):
-    try:
-        root.after(0, lambda: canvas.place_forget())
-        root.after(0, lambda: canvas.delete("all"))
-        root.after(0, lambda: canvas.configure(bg="black"))
-        root.after(0, lambda: root.configure(bg="black"))
-        for label in [username_label, result_label] + slots:
-            root.after(0, lambda l=label: l.configure(bg="black"))
-        for i, label in enumerate(slots):
-            root.after(0, lambda l=label, i=i: l.grid(row=1, column=i, padx=20, pady=(10, 0)))
-
-        root.after(0, lambda: username_label.config(text=f"{username} さんが \n スロットを回しています"))
-        result_label.config(text="")
-        final = choose_weighted_result(force_level)
-
-        for reel, symbol in enumerate(final):
-            for i in range(10):
-                temp_symbol = random.choice(reel_symbols)
-                root.after(0, lambda r=reel, s=temp_symbol: update_label_with_image(slots[r], s))
-                time.sleep(0.05 + i * 0.0015)
-            root.after(0, lambda r=reel, s=symbol: update_label_with_image(slots[r], s))
-            root.after(0, lambda: sounds["stop"].play())
-            time.sleep(0.1)
-
-        message, sound_obj, score = check_combo(final)
-        root.after(0, lambda: result_label.config(text=message))
-        root.after(0, lambda: sound_obj.play())
-        if score >= 50:
-            flash_background()
-            blink_reels()
-            explosion_effect()
-        elif score >= 10:
-            blink_reels()
-            flash_background()
-        elif score > 0:
-            blink_reels(times=2, interval=100)
-
-        add_score(username, score)
-
-    finally:
-        spin_lock.release()
 
 # グローバルDEBUG切り替え用関数
 def toggle_debug():
@@ -112,12 +67,11 @@ def toggle_debug():
 debug_button = tk.Button(root, text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}", font=("Helvetica", 10),
                          command=toggle_debug)
 debug_button.grid(row=3, column=2, pady=(0, 10))
-def semi_match_combo():
-    base = random.choice(reel_symbols)
-    diff = random.choice([s for s in reel_symbols if s != base])
-    combo = [base, base, diff]
-    random.shuffle(combo)
-    return combo
+
+# 手動でスロットを回すボタン
+manual_button = tk.Button(root, text="🎰 手動でスロットを回す", font=("Helvetica", 10),
+                          command=lambda: start_spin_with_user(root, slots, "手動プレイヤー", 0, reel_symbols, sounds))
+manual_button.grid(row=3, column=0, pady=(0, 10))
 
 def main():
     import threading
