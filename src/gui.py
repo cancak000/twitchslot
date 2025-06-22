@@ -21,13 +21,13 @@ slot_images = [None, None, None]
 # 🎮 メインウィンドウ（常時表示：操作パネル用）
 root = tk.Tk()
 root.title("iV Slot Control Panel")
-root.geometry("300x100")
+root.geometry("340x90")
 root.configure(bg="gray20")
 
 # 🎰 スロット表示用ウィンドウ（非表示からスタート）
 slot_window = Toplevel(root)
 slot_window.title("iV Slot")
-slot_window.geometry("520x300")
+slot_window.geometry("520x270")
 slot_window.configure(bg="black")
 slot_window.withdraw()  # ← 初期は非表示
 slot_window.iconify() # アイコン化しておく
@@ -45,8 +45,8 @@ root.report_callback_exception = tk_exception_logger
 canvas = tk.Canvas(slot_window, width=520, height=300, bg="black", highlightthickness=0)
 canvas.place_forget()
 
-status_label = tk.Label(slot_window, text="初期化中...", font=("Helvetica", 14), bg="black", fg="white")
-status_label.grid(row=4, column=0, columnspan=3, pady=(10, 0))
+#status_label = tk.Label(slot_window, text="初期化中...", font=("Helvetica", 14), bg="black", fg="white")
+#status_label.grid(row=4, column=0, columnspan=3, pady=(10, 0))
 
 result_label = tk.Label(slot_window, text="", font=("Helvetica", 24, "bold"), bg="black", fg="white")
 result_label.grid(row=2, column=0, columnspan=3, pady=(10, 20))
@@ -116,7 +116,7 @@ def explosion_effect(duration=800):
         slot_window.after(duration, lambda: canvas.place_forget())
     slot_window.after(0, draw_explosion)
 
-def show_ranking_window():
+def show_ranking_window(slot_window):
     ranking_win = tk.Toplevel(slot_window)
     ranking_win.title("スコアランキング")
     ranking_win.configure(bg="black")

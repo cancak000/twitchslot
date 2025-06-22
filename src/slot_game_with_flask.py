@@ -10,13 +10,12 @@ from config import TWITCH_CLIENT_ID, TWITCH_SECRET, WEBHOOK_SECRET, ACCESS_TOKEN
 import logging
 username_queue = queue.Queue()
 
-from gui import root, slot_window, canvas, slots, username_label, loaded_images, result_label, status_label, flash_background, blink_reels, explosion_effect, show_ranking_window
+from gui import root, slot_window, slots, username_label, loaded_images, flash_background, blink_reels, explosion_effect, show_ranking_window
 from sound_manager import get_sounds
-from score_manager import add_score
-from slot_logic import check_combo, choose_weighted_result
 from slot_animator import start_spin_with_user
-DEBUG = False
 
+DEBUG = False
+SOUND_ENABLED = True
 # 
 import sys
 from utils import setup_logger
@@ -34,24 +33,34 @@ for i in range(3):
     label.grid(row=1, column=i, padx=20, pady=(10, 0))
     slots.append(label)
 
-ranking_button = tk.Button(slot_window, text="🏆 ランキングを見る", font=("Helvetica", 10),
-                           command=lambda: show_ranking_window())
-ranking_button.grid(row=3, column=1, pady=(0, 10))
+ranking_button = tk.Button(root, text="🏆 ランキングを見る", font=("Helvetica", 10),
+                           command=lambda: show_ranking_window(slot_window))
+ranking_button.grid(row=4, column=0, padx=10, pady=5)
 
 # 🔁 スロット演出を順番に処理するワーカー
 def slot_queue_worker():
+    global DEBUG, SOUND_ENABLED
     while True:
         try:
             username, force_level = username_queue.get()
             print(f"▶️ スロット順番待ち中: {username}")
-            if DEBUG:
-                force_level = 3
-            slot_window.after(0, lambda u=username, f=force_level, r=reel_symbols, s=sounds : start_spin_with_user(root, slots, u, f, r, s))
-            spin_lock.acquire()
-            spin_lock.release()
-            username_queue.task_done()
+            force_level = 3 if DEBUG else force_level
+            sound_enable = SOUND_ENABLED
+
+            def run_spin():
+                try:
+                    start_spin_with_user(
+                        root, slots, username, force_level,
+                        reel_symbols, sounds,
+                        sound_enable, username_queue, spin_lock
+                    )
+                finally:
+                    username_queue.task_done()
+
+            slot_window.after(0, run_spin)
         except Exception as e:
             print("❌ キューワーカーエラー:", e)
+
 
 threading.Thread(target=slot_queue_worker, daemon=True).start()
 
@@ -60,22 +69,35 @@ threading.Thread(target=slot_queue_worker, daemon=True).start()
 def toggle_debug():
     global DEBUG
     DEBUG = not DEBUG
-    debug_button.config(text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}")
+    debug_button.config(text=f"🛠 DEBUG: {'ON ' if DEBUG else 'OFF'}")
     print(f"🛠 DEBUGモード {'有効' if DEBUG else '無効'} に切り替えました")
 
 # GUI下部にボタン追加（ranking_buttonの下あたり）
 debug_button = tk.Button(root, text=f"🛠 DEBUG: {'ON' if DEBUG else 'OFF'}", font=("Helvetica", 10),
                          command=toggle_debug)
-debug_button.grid(row=3, column=2, pady=(0, 10))
+debug_button.grid(row=4, column=1, padx=10, pady=5)
 
 def manual_spin():
     force = 3 if DEBUG else 0
-    start_spin_with_user(root, slots, "手動プレイヤー", force, reel_symbols, sounds)
+    sound_enable = True if SOUND_ENABLED else False
+    username_queue.put(("配信者", force))
 
 # 手動でスロットを回すボタン
 manual_button = tk.Button(root, text="🎰 手動でスロットを回す", font=("Helvetica", 10),
                           command=manual_spin)
-manual_button.grid(row=3, column=0, pady=(0, 10))
+manual_button.grid(row=5, column=0, padx=10, pady=5)
+
+# 音のオンオフ切り替え
+def toggle_sound():
+    global SOUND_ENABLED
+    SOUND_ENABLED = not SOUND_ENABLED
+    sound_button.config(text=f"🔊 SOUND: {'ON ' if SOUND_ENABLED else 'OFF'}")
+    print(f"🔊 音の設定を {'有効' if SOUND_ENABLED else '無効'} に切り替えました")
+
+# GUI下部にボタン追加（ranking_buttonの下あたり）
+sound_button = tk.Button(root, text=f"🔇 SOUND: {'ON' if SOUND_ENABLED else 'OFF'}", font=("Helvetica", 10),
+                         command=toggle_sound)
+sound_button.grid(row=5, column=1, padx=10, pady=5)
 
 def main():
     import threading
@@ -132,7 +154,6 @@ def main():
     delete_existing_matching_eventsubs(app_token, reward_ids)
     register_eventsub(app_token, reward_ids, public_url)
     logger.info("✅ EventSubの登録が完了しました")
-
     # GUI ループ開始
     logger.info("🖥️ GUI を起動します")
     root.mainloop()
