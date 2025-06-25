@@ -26,7 +26,7 @@ root.configure(bg="gray20")
 
 # 🎰 スロット表示用ウィンドウ（非表示からスタート）
 slot_window = Toplevel(root)
-slot_window.title("TwiV slot")
+slot_window.title("TwiV Slot")
 slot_window.geometry("520x270")
 slot_window.configure(bg="black")
 slot_window.withdraw()  # ← 初期は非表示
