@@ -1,0 +1,566 @@
+[2025-06-22 14:14:52] INFO: ✨ 起動中...
+[2025-06-22 14:14:58] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002131E109A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:14:58] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:15:00] INFO: ✅ ngrok URL 取得成功（1回目）: https://a325-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:15:00] INFO: ✅ setting.env を更新: https://a325-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:15:00] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 14:17:33] INFO: ✨ 起動中...
+[2025-06-22 14:17:39] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000212CDE317F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:17:39] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:17:41] INFO: ✅ ngrok URL 取得成功（1回目）: https://7b6c-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:17:41] INFO: ✅ setting.env を更新: https://7b6c-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:17:41] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 14:22:07] INFO: ✨ 起動中...
+[2025-06-22 14:22:12] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024C7FD517F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:22:12] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:22:14] INFO: ✅ ngrok URL 取得成功（1回目）: https://df71-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:22:14] INFO: ✅ setting.env を更新: https://df71-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:22:14] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 14:22:53] INFO: ✨ 起動中...
+[2025-06-22 14:22:59] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024E946057F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:22:59] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:23:01] INFO: ✅ ngrok URL 取得成功（1回目）: https://99ba-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:23:01] INFO: ✅ setting.env を更新: https://99ba-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:23:21] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 14:23:42] INFO: ✨ 起動中...
+[2025-06-22 14:23:48] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000012DF28A57F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:23:48] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:23:50] INFO: ✅ ngrok URL 取得成功（1回目）: https://a54a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:23:50] INFO: ✅ setting.env を更新: https://a54a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:23:52] INFO: ⏳ Ngrok(https://a54a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 14:23:53] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 14:23:57] INFO: ✅ EventSubの登録が完了しました
+[2025-06-22 14:23:57] INFO: 🖥️ GUI を起動します
+[2025-06-22 14:24:00] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 14:28:08] INFO: ✨ 起動中...
+[2025-06-22 14:28:14] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DB383EDA90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:28:14] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:28:16] INFO: ✅ ngrok URL 取得成功（1回目）: https://3331-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:28:16] INFO: ✅ setting.env を更新: https://3331-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:28:16] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 14:28:38] INFO: ✨ 起動中...
+[2025-06-22 14:28:44] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001AE343357F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 14:28:44] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 14:28:46] INFO: ✅ ngrok URL 取得成功（1回目）: https://2e98-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 14:28:46] INFO: ✅ setting.env を更新: https://2e98-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 14:28:48] INFO: ⏳ Ngrok(https://2e98-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 14:28:48] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 14:28:53] INFO: ✅ EventSubの登録が完了しました
+[2025-06-22 14:28:53] INFO: 🖥️ GUI を起動します
+[2025-06-22 14:29:47] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:13:32] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002693F0457F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:13:32] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:13:34] INFO: ✅ ngrok URL 取得成功（1回目）: https://af67-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:13:34] INFO: ✅ setting.env を更新: https://af67-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:13:36] INFO: ⏳ Ngrok(https://af67-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:13:36] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:13:56] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:34:46] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000177FF751940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:34:46] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:34:48] INFO: ✅ ngrok URL 取得成功（1回目）: https://ca2d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:34:48] INFO: ✅ setting.env を更新: https://ca2d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:34:50] INFO: ⏳ Ngrok(https://ca2d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:34:50] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:35:11] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:40:31] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B57FF11940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:40:31] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:40:33] INFO: ✅ ngrok URL 取得成功（1回目）: https://a868-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:40:33] INFO: ✅ setting.env を更新: https://a868-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:40:35] INFO: ⏳ Ngrok(https://a868-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:40:35] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:43:04] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:43:13] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025265EC1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:43:13] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:43:15] INFO: ✅ ngrok URL 取得成功（1回目）: https://24b2-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:43:15] INFO: ✅ setting.env を更新: https://24b2-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:43:17] INFO: ⏳ Ngrok(https://24b2-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:43:17] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:44:31] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:47:24] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000178DCD51940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:47:24] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:47:26] INFO: ✅ ngrok URL 取得成功（1回目）: https://5b93-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:47:26] INFO: ✅ setting.env を更新: https://5b93-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:47:28] INFO: ⏳ Ngrok(https://5b93-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:47:28] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:49:02] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:52:11] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001417FB917F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:52:11] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:52:13] INFO: ✅ ngrok URL 取得成功（1回目）: https://43af-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:52:13] INFO: ✅ setting.env を更新: https://43af-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:52:15] INFO: ⏳ Ngrok(https://43af-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:52:15] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:53:50] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 15:55:08] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000292AB0B17F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 15:55:08] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 15:55:10] INFO: ✅ ngrok URL 取得成功（1回目）: https://91d1-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 15:55:10] INFO: ✅ setting.env を更新: https://91d1-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 15:55:12] INFO: ⏳ Ngrok(https://91d1-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 15:55:12] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 15:55:46] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:00:18] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000011EB6B61940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:00:18] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:00:20] INFO: ✅ ngrok URL 取得成功（1回目）: https://e8f5-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:00:20] INFO: ✅ setting.env を更新: https://e8f5-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:00:22] INFO: ⏳ Ngrok(https://e8f5-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:00:22] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 16:00:43] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:01:13] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000019E7F9B1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:01:13] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:01:15] INFO: ✅ ngrok URL 取得成功（1回目）: https://ff64-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:01:15] INFO: ✅ setting.env を更新: https://ff64-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:01:17] INFO: ⏳ Ngrok(https://ff64-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:01:17] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 16:01:27] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:02:13] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F5F57E97F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:02:13] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:02:15] INFO: ✅ ngrok URL 取得成功（1回目）: https://3a38-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:02:15] INFO: ✅ setting.env を更新: https://3a38-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:02:17] INFO: ⏳ Ngrok(https://3a38-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:02:17] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 16:02:29] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:07:28] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028211371940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:07:28] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:07:30] INFO: ✅ ngrok URL 取得成功（1回目）: https://3a02-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:07:30] INFO: ✅ setting.env を更新: https://3a02-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:07:32] INFO: ⏳ Ngrok(https://3a02-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:07:32] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 16:08:29] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:10:37] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D69F0D1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:10:37] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:10:39] INFO: ✅ ngrok URL 取得成功（1回目）: https://c27e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:10:39] INFO: ✅ setting.env を更新: https://c27e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:10:41] INFO: ⏳ Ngrok(https://c27e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:10:42] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 16:11:03] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:14:57] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002A533BC17F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:14:57] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:14:59] INFO: ✅ ngrok URL 取得成功（1回目）: https://61f0-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:14:59] INFO: ✅ setting.env を更新: https://61f0-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:15:01] INFO: ⏳ Ngrok(https://61f0-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:15:01] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 16:16:44] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 16:36:49] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001AE516A6F90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 16:36:49] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 16:36:52] INFO: ✅ ngrok URL 取得成功（1回目）: https://8a0a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 16:36:52] INFO: ✅ setting.env を更新: https://8a0a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 16:36:54] INFO: ⏳ Ngrok(https://8a0a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 16:36:54] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 20:08:53] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 20:09:23] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002002BFF1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 20:09:23] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 20:09:25] INFO: ✅ ngrok URL 取得成功（1回目）: https://0c46-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 20:09:25] INFO: ✅ setting.env を更新: https://0c46-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 20:09:27] INFO: ⏳ Ngrok(https://0c46-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 20:09:28] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 20:18:36] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 20:18:45] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000204AB1457F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 20:18:45] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 20:18:47] INFO: ✅ ngrok URL 取得成功（1回目）: https://dafd-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 20:18:47] INFO: ✅ setting.env を更新: https://dafd-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 20:18:49] INFO: ⏳ Ngrok(https://dafd-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 20:18:49] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 20:26:59] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 20:27:11] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A05EA517F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 20:27:11] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 20:27:13] INFO: ✅ ngrok URL 取得成功（1回目）: https://c46e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 20:27:13] INFO: ✅ setting.env を更新: https://c46e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 20:27:15] INFO: ⏳ Ngrok(https://c46e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 20:27:15] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 20:43:46] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 20:43:57] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000186A61F1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 20:43:57] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 20:43:59] INFO: ✅ ngrok URL 取得成功（1回目）: https://0a91-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 20:43:59] INFO: ✅ setting.env を更新: https://0a91-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 20:44:01] INFO: ⏳ Ngrok(https://0a91-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 20:44:01] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 20:45:15] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 20:45:24] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C946C61940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 20:45:24] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 20:45:26] INFO: ✅ ngrok URL 取得成功（1回目）: https://1233-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 20:45:26] INFO: ✅ setting.env を更新: https://1233-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 20:45:28] INFO: ⏳ Ngrok(https://1233-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 20:45:28] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 21:45:04] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 21:45:16] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028869AB57F0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 21:45:16] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 21:45:18] INFO: ✅ ngrok URL 取得成功（1回目）: https://c2f3-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 21:45:18] INFO: ✅ setting.env を更新: https://c2f3-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 21:45:20] INFO: ⏳ Ngrok(https://c2f3-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 21:45:21] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 21:49:50] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000200D5251940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 21:49:50] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 21:49:52] INFO: ✅ ngrok URL 取得成功（1回目）: https://363c-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 21:49:52] INFO: ✅ setting.env を更新: https://363c-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 21:49:54] INFO: ⏳ Ngrok(https://363c-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 21:49:54] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 21:57:07] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023FFFAC5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 21:57:08] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 21:57:10] INFO: ✅ ngrok URL 取得成功（1回目）: https://bbcd-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 21:57:10] INFO: ✅ setting.env を更新: https://bbcd-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 21:57:12] INFO: ⏳ Ngrok(https://bbcd-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 21:57:12] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 21:58:44] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 21:58:54] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001609FA85A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 21:58:54] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 21:58:57] INFO: ✅ ngrok URL 取得成功（1回目）: https://d96f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 21:58:57] INFO: ✅ setting.env を更新: https://d96f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 21:58:59] INFO: ⏳ Ngrok(https://d96f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 21:58:59] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 21:59:41] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 22:04:19] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001BC7FB55A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 22:04:19] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 22:04:21] INFO: ✅ ngrok URL 取得成功（1回目）: https://f678-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 22:04:21] INFO: ✅ setting.env を更新: https://f678-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 22:04:23] INFO: ⏳ Ngrok(https://f678-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 22:04:23] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 22:06:50] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 22:07:03] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000017DBDBF5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 22:07:04] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 22:07:06] INFO: ✅ ngrok URL 取得成功（1回目）: https://ff4e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 22:07:06] INFO: ✅ setting.env を更新: https://ff4e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 22:07:08] INFO: ⏳ Ngrok(https://ff4e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 22:07:08] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 22:07:49] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 22:08:06] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F47FF85A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 22:08:06] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 22:08:08] INFO: ✅ ngrok URL 取得成功（1回目）: https://6f7a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 22:08:08] INFO: ✅ setting.env を更新: https://6f7a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 22:08:10] INFO: ⏳ Ngrok(https://6f7a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 22:08:10] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 22:12:06] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-22 22:16:59] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002517FB93620>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-22 22:16:59] INFO: 🚀 ngrokを新規起動しました
+[2025-06-22 22:17:01] INFO: ✅ ngrok URL 取得成功（1回目）: https://4a5f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-22 22:17:01] INFO: ✅ setting.env を更新: https://4a5f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-22 22:17:03] INFO: ⏳ Ngrok(https://4a5f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-22 22:17:03] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-22 23:54:40] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:28:18] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A199D65A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:28:18] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:28:20] INFO: ✅ ngrok URL 取得成功（1回目）: https://7f23-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:28:20] INFO: ✅ setting.env を更新: https://7f23-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:28:22] INFO: ⏳ Ngrok(https://7f23-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:28:22] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:33:55] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:34:04] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025338725A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:34:04] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:34:06] INFO: ✅ ngrok URL 取得成功（1回目）: https://3bae-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:34:06] INFO: ✅ setting.env を更新: https://3bae-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:34:08] INFO: ⏳ Ngrok(https://3bae-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:34:08] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:35:24] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:35:33] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000259D64D5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:35:33] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:35:35] INFO: ✅ ngrok URL 取得成功（1回目）: https://283d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:35:35] INFO: ✅ setting.env を更新: https://283d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:35:37] INFO: ⏳ Ngrok(https://283d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:35:38] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:46:43] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:46:52] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028E45CE5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:46:52] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:46:54] INFO: ✅ ngrok URL 取得成功（1回目）: https://e241-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:46:54] INFO: ✅ setting.env を更新: https://e241-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:46:56] INFO: ⏳ Ngrok(https://e241-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:46:57] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:50:35] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:50:45] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000017105F65A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:50:45] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:50:47] INFO: ✅ ngrok URL 取得成功（1回目）: https://c2e9-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:50:47] INFO: ✅ setting.env を更新: https://c2e9-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:50:49] INFO: ⏳ Ngrok(https://c2e9-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:50:49] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:52:27] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:52:38] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B64B0A5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:52:38] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:52:40] INFO: ✅ ngrok URL 取得成功（1回目）: https://2ca9-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:52:40] INFO: ✅ setting.env を更新: https://2ca9-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:52:42] INFO: ⏳ Ngrok(https://2ca9-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:52:42] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:53:05] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:53:14] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000021396A15A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:53:14] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:53:16] INFO: ✅ ngrok URL 取得成功（1回目）: https://d91f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:53:16] INFO: ✅ setting.env を更新: https://d91f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:53:18] INFO: ⏳ Ngrok(https://d91f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:53:18] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:54:04] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:55:46] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029D09555A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:55:46] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:55:48] INFO: ✅ ngrok URL 取得成功（1回目）: https://005d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:55:48] INFO: ✅ setting.env を更新: https://005d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:55:50] INFO: ⏳ Ngrok(https://005d-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:55:50] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:56:49] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:56:59] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002635F105A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:56:59] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:57:01] INFO: ✅ ngrok URL 取得成功（1回目）: https://389e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:57:01] INFO: ✅ setting.env を更新: https://389e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:57:03] INFO: ⏳ Ngrok(https://389e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:57:04] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 04:58:42] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 04:58:51] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000296CC835A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 04:58:51] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 04:58:53] INFO: ✅ ngrok URL 取得成功（1回目）: https://53bf-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 04:58:53] INFO: ✅ setting.env を更新: https://53bf-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 04:58:55] INFO: ⏳ Ngrok(https://53bf-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 04:58:55] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:02:59] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:08:15] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024F9A4B5940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:08:15] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:08:17] INFO: ✅ ngrok URL 取得成功（1回目）: https://702e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 05:08:17] INFO: ✅ setting.env を更新: https://702e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 05:08:19] INFO: ⏳ Ngrok(https://702e-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:08:20] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:09:01] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:11:29] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024FFFFD5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:11:29] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:11:31] INFO: ✅ ngrok URL 取得成功（1回目）: https://987a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 05:11:31] INFO: ✅ setting.env を更新: https://987a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 05:11:33] INFO: ⏳ Ngrok(https://987a-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:11:34] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:13:38] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:13:48] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E6C6FB9A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:13:48] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:13:50] INFO: ✅ ngrok URL 取得成功（1回目）: https://510f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 05:13:50] INFO: ✅ setting.env を更新: https://510f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 05:13:52] INFO: ⏳ Ngrok(https://510f-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:13:52] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:19:24] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:20:07] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002225F3C5BE0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:20:07] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:20:09] INFO: ✅ ngrok URL 取得成功（1回目）: https://56a7-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 05:20:09] INFO: ✅ setting.env を更新: https://56a7-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 05:20:11] INFO: ⏳ Ngrok(https://56a7-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:20:11] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:27:42] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:27:52] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000250DFA85BE0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:27:52] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:27:54] INFO: ✅ ngrok URL 取得成功（1回目）: https://cb10-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app
+[2025-06-23 05:27:54] INFO: ✅ setting.env を更新: https://cb10-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub
+[2025-06-23 05:27:56] INFO: ⏳ Ngrok(https://cb10-240f-45-22e0-1-8480-5449-df13-7ef1.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:27:56] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:39:18] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:44:03] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F7476C1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:44:03] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:44:05] INFO: ✅ ngrok URL 取得成功（1回目）: https://3785-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 05:44:05] INFO: ✅ setting.env を更新: https://3785-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 05:44:07] INFO: ⏳ Ngrok(https://3785-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:44:07] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:48:09] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:48:22] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000021377251940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:48:22] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:48:24] INFO: ✅ ngrok URL 取得成功（1回目）: https://31fa-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 05:48:24] INFO: ✅ setting.env を更新: https://31fa-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 05:48:26] INFO: ⏳ Ngrok(https://31fa-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:48:26] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:51:38] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:51:47] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001EF64931940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:51:47] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:51:49] INFO: ✅ ngrok URL 取得成功（1回目）: https://cb09-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 05:51:49] INFO: ✅ setting.env を更新: https://cb09-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 05:51:51] INFO: ⏳ Ngrok(https://cb09-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:51:52] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:56:00] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:56:10] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024F5F2F1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:56:10] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:56:12] INFO: ✅ ngrok URL 取得成功（1回目）: https://43d9-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 05:56:12] INFO: ✅ setting.env を更新: https://43d9-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 05:56:14] INFO: ⏳ Ngrok(https://43d9-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:56:15] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 05:59:18] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 05:59:27] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000027642511940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 05:59:27] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 05:59:29] INFO: ✅ ngrok URL 取得成功（1回目）: https://8ebc-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 05:59:29] INFO: ✅ setting.env を更新: https://8ebc-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 05:59:31] INFO: ⏳ Ngrok(https://8ebc-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 05:59:32] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:05:42] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:05:53] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000234D2BD5940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:05:53] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:05:55] INFO: ✅ ngrok URL 取得成功（1回目）: https://04f9-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:05:55] INFO: ✅ setting.env を更新: https://04f9-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:05:57] INFO: ⏳ Ngrok(https://04f9-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:05:57] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:06:53] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:07:45] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001BE6D411940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:07:45] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:07:47] INFO: ✅ ngrok URL 取得成功（1回目）: https://4ac1-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:07:47] INFO: ✅ setting.env を更新: https://4ac1-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:07:49] INFO: ⏳ Ngrok(https://4ac1-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:07:49] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:13:47] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:13:56] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023BE2A21940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:13:56] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:13:58] INFO: ✅ ngrok URL 取得成功（1回目）: https://de0e-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:13:58] INFO: ✅ setting.env を更新: https://de0e-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:14:00] INFO: ⏳ Ngrok(https://de0e-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:14:01] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:14:55] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:20:36] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D270AE5940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:20:36] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:20:38] INFO: ✅ ngrok URL 取得成功（1回目）: https://db12-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:20:38] INFO: ✅ setting.env を更新: https://db12-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:20:40] INFO: ⏳ Ngrok(https://db12-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:20:40] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:22:19] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:22:29] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000028CF8C65940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:22:29] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:22:31] INFO: ✅ ngrok URL 取得成功（1回目）: https://6c0a-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:22:31] INFO: ✅ setting.env を更新: https://6c0a-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:22:33] INFO: ⏳ Ngrok(https://6c0a-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:22:34] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:23:05] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:23:14] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000260F7935940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:23:14] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:23:16] INFO: ✅ ngrok URL 取得成功（1回目）: https://072f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:23:16] INFO: ✅ setting.env を更新: https://072f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:23:19] INFO: ⏳ Ngrok(https://072f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:23:19] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:23:48] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:32:20] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023E040A5BE0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:32:20] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:32:22] INFO: ✅ ngrok URL 取得成功（1回目）: https://ffc5-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:32:22] INFO: ✅ setting.env を更新: https://ffc5-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:32:24] INFO: ⏳ Ngrok(https://ffc5-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:32:25] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:34:01] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:34:11] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DF75609A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:34:11] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:34:13] INFO: ✅ ngrok URL 取得成功（1回目）: https://ee16-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:34:13] INFO: ✅ setting.env を更新: https://ee16-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:34:15] INFO: ⏳ Ngrok(https://ee16-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:34:15] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:35:54] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:36:03] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C21AED5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:36:03] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:36:05] INFO: ✅ ngrok URL 取得成功（1回目）: https://eea5-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:36:05] INFO: ✅ setting.env を更新: https://eea5-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:36:07] INFO: ⏳ Ngrok(https://eea5-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:36:07] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:36:12] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:37:25] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001FD7FC79A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:37:25] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:37:27] INFO: ✅ ngrok URL 取得成功（1回目）: https://73b8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:37:27] INFO: ✅ setting.env を更新: https://73b8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:37:29] INFO: ⏳ Ngrok(https://73b8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:37:30] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:42:36] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:42:45] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000013EC0CF9A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:42:45] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:42:47] INFO: ✅ ngrok URL 取得成功（1回目）: https://6e9f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:42:47] INFO: ✅ setting.env を更新: https://6e9f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:42:50] INFO: ⏳ Ngrok(https://6e9f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:42:50] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:45:29] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:45:39] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002346EAA1BE0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:45:39] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:45:41] INFO: ✅ ngrok URL 取得成功（1回目）: https://90c0-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:45:41] INFO: ✅ setting.env を更新: https://90c0-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:45:43] INFO: ⏳ Ngrok(https://90c0-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:45:43] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:47:08] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:48:01] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002D67B609A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:48:01] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:48:03] INFO: ✅ ngrok URL 取得成功（1回目）: https://f4a8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:48:03] INFO: ✅ setting.env を更新: https://f4a8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:48:05] INFO: ⏳ Ngrok(https://f4a8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:48:05] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:50:20] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:56:25] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001B1C5C75A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:56:25] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:56:27] INFO: ✅ ngrok URL 取得成功（1回目）: https://2d2f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:56:27] INFO: ✅ setting.env を更新: https://2d2f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:56:29] INFO: ⏳ Ngrok(https://2d2f-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:56:30] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 06:58:42] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 06:58:52] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000022946DD1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 06:58:52] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 06:58:54] INFO: ✅ ngrok URL 取得成功（1回目）: https://fd2c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 06:58:54] INFO: ✅ setting.env を更新: https://fd2c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 06:58:56] INFO: ⏳ Ngrok(https://fd2c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 06:58:56] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 07:05:09] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 07:05:18] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000242783A1940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 07:05:18] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 07:05:20] INFO: ✅ ngrok URL 取得成功（1回目）: https://c96c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 07:05:20] INFO: ✅ setting.env を更新: https://c96c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 07:05:22] INFO: ⏳ Ngrok(https://c96c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 07:05:22] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 07:06:10] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 07:06:19] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A921665940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 07:06:19] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 07:06:21] INFO: ✅ ngrok URL 取得成功（1回目）: https://3f1c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 07:06:21] INFO: ✅ setting.env を更新: https://3f1c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 07:06:23] INFO: ⏳ Ngrok(https://3f1c-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 07:06:23] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 07:11:50] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 07:12:00] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002632D435A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 07:12:00] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 07:12:02] INFO: ✅ ngrok URL 取得成功（1回目）: https://ff62-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 07:12:02] INFO: ✅ setting.env を更新: https://ff62-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 07:12:04] INFO: ⏳ Ngrok(https://ff62-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 07:12:04] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 07:18:50] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 07:19:00] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C86A295940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 07:19:00] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 07:19:02] INFO: ✅ ngrok URL 取得成功（1回目）: https://5920-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 07:19:02] INFO: ✅ setting.env を更新: https://5920-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 07:19:04] INFO: ⏳ Ngrok(https://5920-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 07:19:04] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 07:26:10] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 07:26:54] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001DF5C195940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 07:26:54] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 07:26:56] INFO: ✅ ngrok URL 取得成功（1回目）: https://45be-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 07:26:56] INFO: ✅ setting.env を更新: https://45be-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 07:26:58] INFO: ⏳ Ngrok(https://45be-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 07:26:58] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 07:28:18] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 07:37:30] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020D0A3B74D0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 07:37:30] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 07:37:32] INFO: ✅ ngrok URL 取得成功（1回目）: https://3c98-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 07:37:32] INFO: ✅ setting.env を更新: https://3c98-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 07:37:34] INFO: ⏳ Ngrok(https://3c98-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 07:37:34] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 10:06:59] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-23 16:40:22] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000260F12A5A90>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-23 16:40:22] INFO: 🚀 ngrokを新規起動しました
+[2025-06-23 16:40:24] INFO: ✅ ngrok URL 取得成功（1回目）: https://cfa8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app
+[2025-06-23 16:40:25] INFO: ✅ setting.env を更新: https://cfa8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub
+[2025-06-23 16:40:27] INFO: ⏳ Ngrok(https://cfa8-240f-45-22e0-1-6123-c3dd-ea04-752f.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-23 16:40:27] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-23 16:46:58] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-24 02:17:16] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024B8D5E34D0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-24 02:17:17] INFO: 🚀 ngrokを新規起動しました
+[2025-06-24 02:17:19] INFO: ✅ ngrok URL 取得成功（1回目）: https://ba2a-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app
+[2025-06-24 02:17:19] INFO: ✅ setting.env を更新: https://ba2a-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app/eventsub
+[2025-06-24 02:17:21] INFO: ⏳ Ngrok(https://ba2a-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-24 02:17:21] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-24 03:17:38] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-24 11:38:09] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025D313674D0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-24 11:38:09] INFO: 🚀 ngrokを新規起動しました
+[2025-06-24 11:38:11] INFO: ✅ ngrok URL 取得成功（1回目）: https://8a7d-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app
+[2025-06-24 11:38:11] INFO: ✅ setting.env を更新: https://8a7d-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app/eventsub
+[2025-06-24 11:38:13] INFO: ⏳ Ngrok(https://8a7d-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-24 11:38:14] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-24 13:35:15] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-25 00:56:48] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000017A61EF74D0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-25 00:56:48] INFO: 🚀 ngrokを新規起動しました
+[2025-06-25 00:56:50] INFO: ✅ ngrok URL 取得成功（1回目）: https://6c22-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app
+[2025-06-25 00:56:50] INFO: ✅ setting.env を更新: https://6c22-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app/eventsub
+[2025-06-25 00:56:53] INFO: ⏳ Ngrok(https://6c22-240f-45-22e0-1-61f9-e40-a8ff-11ee.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-25 00:56:53] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-25 16:47:52] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-25 19:27:40] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002405E7934D0>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-25 19:27:40] INFO: 🚀 ngrokを新規起動しました
+[2025-06-25 19:27:42] INFO: ✅ ngrok URL 取得成功（1回目）: https://de98-240f-45-22e0-1-71ea-ab1f-1b53-41ea.ngrok-free.app
+[2025-06-25 19:27:42] INFO: ✅ setting.env を更新: https://de98-240f-45-22e0-1-71ea-ab1f-1b53-41ea.ngrok-free.app/eventsub
+[2025-06-25 19:27:44] INFO: ⏳ Ngrok(https://de98-240f-45-22e0-1-71ea-ab1f-1b53-41ea.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-25 19:27:44] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-26 02:39:09] INFO: 🛑 ngrok停止処理を実行しました
+[2025-06-26 05:31:39] WARNING: 🌐 ngrokのURL取得失敗: HTTPConnectionPool(host='localhost', port=4040): Max retries exceeded with url: /api/tunnels (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026A11755940>: Failed to establish a new connection: [WinError 10061] 対象のコンピューターによって拒否されたため、接続できませんでした。'))
+[2025-06-26 05:31:39] INFO: 🚀 ngrokを新規起動しました
+[2025-06-26 05:31:41] INFO: ✅ ngrok URL 取得成功（1回目）: https://b07f-240f-45-22e0-1-e1af-93b6-a494-bb58.ngrok-free.app
+[2025-06-26 05:31:41] INFO: ✅ setting.env を更新: https://b07f-240f-45-22e0-1-e1af-93b6-a494-bb58.ngrok-free.app/eventsub
+[2025-06-26 05:31:43] INFO: ⏳ Ngrok(https://b07f-240f-45-22e0-1-e1af-93b6-a494-bb58.ngrok-free.app/eventsub) の公開確認中...
+[2025-06-26 05:31:44] INFO: ✅ Ngrok 公開URL 応答確認成功
+[2025-06-26 05:33:45] INFO: 🛑 ngrok停止処理を実行しました

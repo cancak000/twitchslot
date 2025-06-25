@@ -20,13 +20,13 @@ slot_images = [None, None, None]
 
 # 🎮 メインウィンドウ（常時表示：操作パネル用）
 root = tk.Tk()
-root.title("iV Slot Control Panel")
+root.title("TwiV Slot Control Panel")
 root.geometry("340x90")
 root.configure(bg="gray20")
 
 # 🎰 スロット表示用ウィンドウ（非表示からスタート）
 slot_window = Toplevel(root)
-slot_window.title("iV Slot")
+slot_window.title("TwiV slot")
 slot_window.geometry("520x270")
 slot_window.configure(bg="black")
 slot_window.withdraw()  # ← 初期は非表示
@@ -57,14 +57,14 @@ username_label.grid(row=0, column=0, columnspan=3, pady=(10, 0))
 
 
 image_paths = {
-    "GENIE": "image/jinny.png",
-    "PALACE": "image/castle.png",
-    "MOON": "image/moon.png",
-    "LAMP": "image/ramp.png",
-    "CARPET": "image/carpet.png",
-    "COIN": "image/coin.png",
-    "SCORPION": "image/scorpion.png",
-    "CAMEL": "image/camel.png"
+    "GENIE": "image/arabia/jinny.png",
+    "COIN": "image/arabia/twitch.png",
+    "PALACE": "image/arabia/castle.png",
+    "MOON": "image/arabia/moon.png",
+    "LAMP": "image/arabia/lamp.png",
+    "CARPET": "image/arabia/carpet.png",
+    "SCORPION": "image/arabia/scorpion.png",
+    "CAMEL": "image/arabia/camel.png"
 }
 
 loaded_images = {

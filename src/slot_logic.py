@@ -10,13 +10,13 @@ sounds = get_sounds()
 
 def check_combo(combo):
     if combo == ["GENIE"] * 3:
-        return "🎊 ジーニー揃い！", sounds["big"], 100
+        return "🎊 大大大当たり", sounds["big"], 100
     elif combo == ["COIN"] * 3:
-        return "💰 コイン大当たり！", sounds["big"], 50
+        return "💰 大当たり！", sounds["big"], 50
     elif combo == ["CAMEL"] * 3:
-        return "🐪 ラクダ中当たり！", sounds["small"], 20
+        return "🐪 中当たり！", sounds["small"], 20
     elif combo == ["MOON"] * 3:
-        return "🌙 月の神秘！", sounds["small"], 10
+        return "🌙 中当たり", sounds["small"], 10
     elif combo[0] == combo[1] or combo[1] == combo[2] or combo[0] == combo[2]:
         return "✨ 小当たり！", sounds["small"], 5
     else:

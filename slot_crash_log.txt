@@ -1,0 +1,9 @@
+【致命的エラー】
+Traceback (most recent call last):
+  File "C:\Users\jigya.DESKTOP-UAE79A2\OneDrive\ドキュメント\Twitch配信用\v0.2.3\twitchslot\src\slot_game_with_flask.py", line 172, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\jigya.DESKTOP-UAE79A2\OneDrive\ドキュメント\Twitch配信用\v0.2.3\twitchslot\src\slot_game_with_flask.py", line 165, in main
+    spin_lock.release()
+    ~~~~~~~~~~~~~~~~~^^
+RuntimeError: release unlocked lock
